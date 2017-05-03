@@ -1,0 +1,5 @@
+
+- The app only works connected to a GroundControlServer. No offline/cached data management.
+- UI 100% Swift, some parts (such as frameworks) may be in ObjC
+- Almost no storage on disk (except preferences and minor resources), no Core Data, everything in memory?
+- minimum target: macOS 10.12 

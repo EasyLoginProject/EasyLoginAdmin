@@ -3,3 +3,7 @@
 - UI 100% Swift, some parts (such as frameworks) may be in ObjC
 - Almost no storage on disk (except preferences and minor resources), no Core Data, everything in memory?
 - minimum target: macOS 10.12 
+
+- Do not depend on AlamoFire or another huge HTTP framework. Uses CFXNetworkOperation subclasses (objC)
+- "GC" as prefix for the (as few as possible) objC classes?
+- use bindings extensively since it seems quite dedicated to listing in tableviews and +/- buttons (typically with NSArrayController) ?

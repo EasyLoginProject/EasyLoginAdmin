@@ -11,6 +11,8 @@
 		C471D4071EBA00D70015997C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C471D4061EBA00D70015997C /* ViewController.swift */; };
 		C471D4091EBA00D70015997C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C471D4081EBA00D70015997C /* Assets.xcassets */; };
 		C471D40C1EBA00D70015997C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C471D40A1EBA00D70015997C /* Main.storyboard */; };
+		C4C5F9051EC073F6003C91A9 /* UsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C5F9041EC073F6003C91A9 /* UsersViewController.swift */; };
+		C4C5F90C1EC080EF003C91A9 /* libgroundControlMacLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C43880141EBA01380052BD2F /* libgroundControlMacLib.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +33,8 @@
 		C471D4081EBA00D70015997C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C471D40B1EBA00D70015997C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C471D40D1EBA00D70015997C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C4C5F9041EC073F6003C91A9 /* UsersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersViewController.swift; sourceTree = "<group>"; };
+		C4C5F90D1EC0832D003C91A9 /* GroundControlAdmin-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GroundControlAdmin-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +42,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4C5F90C1EC080EF003C91A9 /* libgroundControlMacLib.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,8 +77,10 @@
 		C471D4031EBA00D70015997C /* GroundControlAdmin */ = {
 			isa = PBXGroup;
 			children = (
+				C4C5F90D1EC0832D003C91A9 /* GroundControlAdmin-Bridging-Header.h */,
 				C471D4041EBA00D70015997C /* AppDelegate.swift */,
 				C471D4061EBA00D70015997C /* ViewController.swift */,
+				C4C5F9041EC073F6003C91A9 /* UsersViewController.swift */,
 				C471D4081EBA00D70015997C /* Assets.xcassets */,
 				C471D40A1EBA00D70015997C /* Main.storyboard */,
 				C471D40D1EBA00D70015997C /* Info.plist */,
@@ -170,6 +177,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C471D4071EBA00D70015997C /* ViewController.swift in Sources */,
+				C4C5F9051EC073F6003C91A9 /* UsersViewController.swift in Sources */,
 				C471D4051EBA00D70015997C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -229,6 +237,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/../lib/groundControlMacLib/";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -273,6 +282,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/../lib/groundControlMacLib/";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
@@ -288,8 +298,10 @@
 				DEVELOPMENT_TEAM = JXHB9UP6QZ;
 				INFOPLIST_FILE = GroundControlAdmin/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/GroundControl/";
 				PRODUCT_BUNDLE_IDENTIFIER = pub.groundcontrol.GroundControlAdmin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "GroundControlAdmin/GroundControlAdmin-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -302,8 +314,10 @@
 				DEVELOPMENT_TEAM = JXHB9UP6QZ;
 				INFOPLIST_FILE = GroundControlAdmin/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/GroundControl/";
 				PRODUCT_BUNDLE_IDENTIFIER = pub.groundcontrol.GroundControlAdmin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "GroundControlAdmin/GroundControlAdmin-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

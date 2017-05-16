@@ -12,7 +12,7 @@ class UsersViewController: NSViewController {
     @IBOutlet weak var tableView: NSTableView!
     @IBOutlet var usersArrayController: NSArrayController!
     
-    var webServiceConnector: GCWebServiceConnector?
+    var webServiceConnector: ELWebServiceConnector?
     
     override func viewDidLoad() {
         super.viewDidLoad()

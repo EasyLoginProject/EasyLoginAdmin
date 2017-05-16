@@ -11,30 +11,30 @@
 		C471D4071EBA00D70015997C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C471D4061EBA00D70015997C /* ViewController.swift */; };
 		C471D4091EBA00D70015997C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C471D4081EBA00D70015997C /* Assets.xcassets */; };
 		C471D40C1EBA00D70015997C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C471D40A1EBA00D70015997C /* Main.storyboard */; };
+		C4A46FCE1ECB046E00306580 /* libEasyLoginMacLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C4A46FC71ECB02F000306580 /* libEasyLoginMacLib.a */; };
 		C4C5F9051EC073F6003C91A9 /* UsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C5F9041EC073F6003C91A9 /* UsersViewController.swift */; };
-		C4C5F90C1EC080EF003C91A9 /* libgroundControlMacLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C43880141EBA01380052BD2F /* libgroundControlMacLib.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		C43880131EBA01380052BD2F /* PBXContainerItemProxy */ = {
+		C4A46FC61ECB02F000306580 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = C438800F1EBA01370052BD2F /* groundControlMacLib.xcodeproj */;
+			containerPortal = C4A46FC21ECB02F000306580 /* EasyLoginMacLib.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = C43880031EBA01370052BD2F;
-			remoteInfo = groundControlMacLib;
+			remoteInfo = EasyLoginMacLib;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		C438800F1EBA01370052BD2F /* groundControlMacLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = groundControlMacLib.xcodeproj; path = ../../lib/groundControlMacLib/groundControlMacLib.xcodeproj; sourceTree = "<group>"; };
-		C471D4011EBA00D70015997C /* GroundControlAdmin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GroundControlAdmin.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C471D4011EBA00D70015997C /* EasyLoginAdmin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyLoginAdmin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C471D4041EBA00D70015997C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C471D4061EBA00D70015997C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C471D4081EBA00D70015997C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C471D40B1EBA00D70015997C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C471D40D1EBA00D70015997C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C4A46FC21ECB02F000306580 /* EasyLoginMacLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = EasyLoginMacLib.xcodeproj; path = ../../lib/EasyLoginMacLib/EasyLoginMacLib.xcodeproj; sourceTree = "<group>"; };
+		C4A46FCD1ECB044400306580 /* EasyLoginAdmin-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EasyLoginAdmin-Bridging-Header.h"; sourceTree = "<group>"; };
 		C4C5F9041EC073F6003C91A9 /* UsersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersViewController.swift; sourceTree = "<group>"; };
-		C4C5F90D1EC0832D003C91A9 /* GroundControlAdmin-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GroundControlAdmin-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,26 +42,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C4C5F90C1EC080EF003C91A9 /* libgroundControlMacLib.a in Frameworks */,
+				C4A46FCE1ECB046E00306580 /* libEasyLoginMacLib.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C43880101EBA01370052BD2F /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				C43880141EBA01380052BD2F /* libgroundControlMacLib.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		C471D3F81EBA00D70015997C = {
 			isa = PBXGroup;
 			children = (
-				C438800F1EBA01370052BD2F /* groundControlMacLib.xcodeproj */,
-				C471D4031EBA00D70015997C /* GroundControlAdmin */,
+				C4A46FC21ECB02F000306580 /* EasyLoginMacLib.xcodeproj */,
+				C471D4031EBA00D70015997C /* EasyLogin */,
 				C471D4021EBA00D70015997C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -69,15 +61,15 @@
 		C471D4021EBA00D70015997C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C471D4011EBA00D70015997C /* GroundControlAdmin.app */,
+				C471D4011EBA00D70015997C /* EasyLoginAdmin.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C471D4031EBA00D70015997C /* GroundControlAdmin */ = {
+		C471D4031EBA00D70015997C /* EasyLogin */ = {
 			isa = PBXGroup;
 			children = (
-				C4C5F90D1EC0832D003C91A9 /* GroundControlAdmin-Bridging-Header.h */,
+				C4A46FCD1ECB044400306580 /* EasyLoginAdmin-Bridging-Header.h */,
 				C471D4041EBA00D70015997C /* AppDelegate.swift */,
 				C471D4061EBA00D70015997C /* ViewController.swift */,
 				C4C5F9041EC073F6003C91A9 /* UsersViewController.swift */,
@@ -85,15 +77,24 @@
 				C471D40A1EBA00D70015997C /* Main.storyboard */,
 				C471D40D1EBA00D70015997C /* Info.plist */,
 			);
-			path = GroundControlAdmin;
+			name = EasyLogin;
+			path = EasyLoginAdmin;
+			sourceTree = "<group>";
+		};
+		C4A46FC31ECB02F000306580 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C4A46FC71ECB02F000306580 /* libEasyLoginMacLib.a */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C471D4001EBA00D70015997C /* GroundControlAdmin */ = {
+		C471D4001EBA00D70015997C /* EasyLoginAdmin */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C471D4101EBA00D70015997C /* Build configuration list for PBXNativeTarget "GroundControlAdmin" */;
+			buildConfigurationList = C471D4101EBA00D70015997C /* Build configuration list for PBXNativeTarget "EasyLoginAdmin" */;
 			buildPhases = (
 				C471D3FD1EBA00D70015997C /* Sources */,
 				C471D3FE1EBA00D70015997C /* Frameworks */,
@@ -103,9 +104,9 @@
 			);
 			dependencies = (
 			);
-			name = GroundControlAdmin;
+			name = EasyLoginAdmin;
 			productName = GroundControlAdmin;
-			productReference = C471D4011EBA00D70015997C /* GroundControlAdmin.app */;
+			productReference = C471D4011EBA00D70015997C /* EasyLoginAdmin.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -125,7 +126,7 @@
 					};
 				};
 			};
-			buildConfigurationList = C471D3FC1EBA00D70015997C /* Build configuration list for PBXProject "GroundControlAdmin" */;
+			buildConfigurationList = C471D3FC1EBA00D70015997C /* Build configuration list for PBXProject "EasyLoginAdmin" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -138,23 +139,23 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = C43880101EBA01370052BD2F /* Products */;
-					ProjectRef = C438800F1EBA01370052BD2F /* groundControlMacLib.xcodeproj */;
+					ProductGroup = C4A46FC31ECB02F000306580 /* Products */;
+					ProjectRef = C4A46FC21ECB02F000306580 /* EasyLoginMacLib.xcodeproj */;
 				},
 			);
 			projectRoot = "";
 			targets = (
-				C471D4001EBA00D70015997C /* GroundControlAdmin */,
+				C471D4001EBA00D70015997C /* EasyLoginAdmin */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		C43880141EBA01380052BD2F /* libgroundControlMacLib.a */ = {
+		C4A46FC71ECB02F000306580 /* libEasyLoginMacLib.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
-			path = libgroundControlMacLib.a;
-			remoteRef = C43880131EBA01380052BD2F /* PBXContainerItemProxy */;
+			path = libEasyLoginMacLib.a;
+			remoteRef = C4A46FC61ECB02F000306580 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -237,7 +238,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/../lib/groundControlMacLib/";
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/../lib/EasyLoginMacLib/";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -282,7 +283,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/../lib/groundControlMacLib/";
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/../lib/EasyLoginMacLib/";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
@@ -294,14 +295,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = JXHB9UP6QZ;
-				INFOPLIST_FILE = GroundControlAdmin/Info.plist;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = "$(SRCROOT)/EasyLoginAdmin/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				LIBRARY_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/GroundControl/";
-				PRODUCT_BUNDLE_IDENTIFIER = pub.groundcontrol.GroundControlAdmin;
+				LIBRARY_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/EasyLogin/";
+				PRODUCT_BUNDLE_IDENTIFIER = io.easylogin.easyloginAdmin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "GroundControlAdmin/GroundControlAdmin-Bridging-Header.h";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "EasyLoginAdmin/EasyLoginAdmin-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -310,14 +313,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = JXHB9UP6QZ;
-				INFOPLIST_FILE = GroundControlAdmin/Info.plist;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = "$(SRCROOT)/EasyLoginAdmin/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				LIBRARY_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/GroundControl/";
-				PRODUCT_BUNDLE_IDENTIFIER = pub.groundcontrol.GroundControlAdmin;
+				LIBRARY_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/EasyLogin/";
+				PRODUCT_BUNDLE_IDENTIFIER = io.easylogin.easyloginAdmin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "GroundControlAdmin/GroundControlAdmin-Bridging-Header.h";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "EasyLoginAdmin/EasyLoginAdmin-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -325,7 +330,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C471D3FC1EBA00D70015997C /* Build configuration list for PBXProject "GroundControlAdmin" */ = {
+		C471D3FC1EBA00D70015997C /* Build configuration list for PBXProject "EasyLoginAdmin" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C471D40E1EBA00D70015997C /* Debug */,
@@ -334,7 +339,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C471D4101EBA00D70015997C /* Build configuration list for PBXNativeTarget "GroundControlAdmin" */ = {
+		C471D4101EBA00D70015997C /* Build configuration list for PBXNativeTarget "EasyLoginAdmin" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C471D4111EBA00D70015997C /* Debug */,

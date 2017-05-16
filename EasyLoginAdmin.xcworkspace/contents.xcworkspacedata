@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:GroundControlAdmin/GroundControlAdmin.xcodeproj">
+      location = "container:EasyLoginAdmin/EasyLoginAdmin.xcodeproj">
    </FileRef>
 </Workspace>

@@ -1,9 +1,9 @@
 //
 //  AppDelegate.swift
-//  GroundControlAdmin
+//  EasyLoginAdmin
 //
 //  Created by Aurélien Hugelé on 03/05/2017.
-//  Copyright © 2017 GroundControl. All rights reserved.
+//  Copyright © 2017 EasyLogin. All rights reserved.
 //
 
 import Cocoa

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
+        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12120"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -654,7 +655,7 @@
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="GroundControlAdmin" customModuleProvider="target"/>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="EasyLoginAdmin" customModuleProvider="target"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-219" y="-297"/>
@@ -704,7 +705,7 @@
         <!--Users-->
         <scene sceneID="TWQ-PH-8Kb">
             <objects>
-                <viewController title="Users" id="Ece-KU-tsJ" customClass="UsersViewController" sceneMemberID="viewController">
+                <viewController title="Users" id="Ece-KU-tsJ" customClass="UsersViewController" customModule="EasyLoginAdmin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="PHN-0v-TFf">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="320"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -713,10 +714,10 @@
                                 <rect key="frame" x="0.0" y="28" width="450" height="292"/>
                                 <clipView key="contentView" id="ar5-B3-VG4">
                                     <rect key="frame" x="1" y="0.0" width="448" height="291"/>
-                                    <autoresizingMask key="autoresizingMask"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="DdH-27-fQO" viewBased="YES" id="9c7-Ui-XVw">
-                                            <rect key="frame" x="0.0" y="0.0" width="452" height="268"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="451.5" height="268"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -802,11 +803,11 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView id="Rm0-cq-dZZ">
-                                                            <rect key="frame" x="272" y="1" width="178" height="17"/>
+                                                            <rect key="frame" x="272" y="1" width="177" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="prK-mq-042">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="178" height="17"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="177" height="17"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="oTY-F8-Rio">
                                                                         <font key="font" metaFont="system"/>
@@ -837,7 +838,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <tableHeaderView key="headerView" id="DdH-27-fQO">
-                                    <rect key="frame" x="0.0" y="0.0" width="452" height="23"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="451.5" height="23"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableHeaderView>
                             </scrollView>

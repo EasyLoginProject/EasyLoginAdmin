@@ -26,7 +26,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="40" rowSizeStyle="automatic" headerView="Y7x-I7-1tn" viewBased="YES" id="eeG-gh-baY">
-                                <rect key="frame" x="0.0" y="0.0" width="448.5" height="268"/>
+                                <rect key="frame" x="0.0" y="0.0" width="450.5" height="268"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -104,8 +104,8 @@
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn identifier="identifier" width="164" minWidth="10" maxWidth="3.4028234663852886e+38" id="fNF-SO-LWW">
-                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Identifier">
+                                    <tableColumn identifier="fullName" width="166" minWidth="10" maxWidth="3.4028234663852886e+38" id="fNF-SO-LWW">
+                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Full Name">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -118,11 +118,11 @@
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="5We-HC-5kB">
-                                                <rect key="frame" x="282.5" y="1" width="164" height="40"/>
+                                                <rect key="frame" x="282.5" y="1" width="166" height="40"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JAG-5P-EFH">
-                                                        <rect key="frame" x="0.0" y="12" width="164" height="17"/>
+                                                        <rect key="frame" x="0.0" y="12" width="166" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="gKP-78-oe0">
                                                             <font key="font" metaFont="system"/>
@@ -130,7 +130,7 @@
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                         <connections>
-                                                            <binding destination="5We-HC-5kB" name="value" keyPath="objectValue.identifier" id="T91-Jm-T8C"/>
+                                                            <binding destination="5We-HC-5kB" name="value" keyPath="objectValue.fullName" id="WNx-TO-Z7t"/>
                                                         </connections>
                                                     </textField>
                                                 </subviews>
@@ -158,7 +158,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <tableHeaderView key="headerView" id="Y7x-I7-1tn">
-                        <rect key="frame" x="0.0" y="0.0" width="448.5" height="23"/>
+                        <rect key="frame" x="0.0" y="0.0" width="450.5" height="23"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </tableHeaderView>
                 </scrollView>
@@ -179,7 +179,13 @@
                     <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSAddTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="sPV-Xv-a0f">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
+                        <connections>
+                            <action selector="addUserButtonActivated:" target="-2" id="RX5-fS-qZl"/>
+                        </connections>
                     </buttonCell>
+                    <connections>
+                        <binding destination="IJa-Qa-IWA" name="enabled" keyPath="canAdd" id="vKU-aC-e0A"/>
+                    </connections>
                 </button>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="h4A-T5-HXn">
                     <rect key="frame" x="26" y="2" width="21" height="23"/>
@@ -191,6 +197,10 @@
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="deleteUserButtonActivated:" target="-2" id="RXL-K3-xAe"/>
+                        <binding destination="IJa-Qa-IWA" name="enabled" keyPath="canRemove" id="MnZ-Hq-nh5"/>
+                    </connections>
                 </button>
             </subviews>
             <constraints>

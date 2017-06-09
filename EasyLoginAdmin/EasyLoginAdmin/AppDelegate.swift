@@ -19,7 +19,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var mainViewController : MainViewController!
     var mainTabViewController : NSTabViewController!
     var usersViewController : UsersViewController!
-    var groupsViewController : NSViewController! // see later
+    var groupsViewController : GroupsViewController! 
     
     var connector : ELWebServiceConnector?
     
@@ -46,9 +46,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         mainViewController.view.addSubview(mainTabViewController.view)
         
         usersViewController = UsersViewController(webServiceConnector: connector)
+        groupsViewController = GroupsViewController(webServiceConnector: connector)
         
         mainTabViewController.addChildViewController(usersViewController)
-        
+        mainTabViewController.addChildViewController(groupsViewController)
         
         windowController.contentViewController = mainViewController
     }

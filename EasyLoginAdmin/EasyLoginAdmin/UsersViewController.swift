@@ -12,19 +12,22 @@ class UsersViewController: NSViewController {
     @IBOutlet weak var tableView: NSTableView!
     @IBOutlet var usersArrayController: NSArrayController!
     
-    var webServiceConnector: ELWebServiceConnector?
+    let webServiceConnector: ELWebServiceConnector?
     
     required init?(coder: NSCoder) {
+        
+        self.webServiceConnector = nil
         
         super.init(coder: coder)
     }
     
     init(webServiceConnector: ELWebServiceConnector?) {
         
-        super.init(nibName:"UsersViewController", bundle:nil)!
-        
         self.webServiceConnector = webServiceConnector
-        self.title = "Users" 
+        
+        super.init(nibName:"UsersViewController", bundle:nil)!
+    
+        self.title = "Users"
     }
     
     override func viewDidLoad() {
@@ -32,6 +35,14 @@ class UsersViewController: NSViewController {
         if let op = webServiceConnector?.getUserPropertiesOperation(forUserUniqueId: "5d30d66df8414c2daf04ba70a654edc6", completionBlock: { (userProperties: [String : Any]?, operation: CFXNetworkOperation) in
             if let userProperties = userProperties {
                 print(userProperties);
+            }
+        }) {
+            webServiceConnector?.enqueue(op)
+        }
+        
+        if let op = webServiceConnector?.getAllUsersOperation(completionBlock: { (users, op) in
+            if let users = users {
+                self.usersArrayController.content = users;
             }
         }) {
             webServiceConnector?.enqueue(op)

@@ -8,19 +8,49 @@
 
 import Cocoa
 
+let baseURLString = "http://develop.eu.easylogin.cloud"  //"http://easylogin.imoof.com:9789/whatever/v1/"
+
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-
-
-
+    
+    @IBOutlet weak var window: NSWindow!
+    
+    var windowController : NSWindowController!
+    var mainViewController : MainViewController!
+    var mainTabViewController : NSTabViewController!
+    var usersViewController : UsersViewController!
+    var groupsViewController : NSViewController! // see later
+    
+    var connector : ELWebServiceConnector?
+    
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        // Insert code here to initialize your application
+    
+        connector = ELWebServiceConnector(baseURL: URL(string:baseURLString)!, headers: nil)
+    
+        self.setupMainUI()
+        windowController.window?.makeKeyAndOrderFront(self)
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
     }
 
-
+    func setupMainUI() {
+        
+        windowController = NSWindowController(window: window)
+        
+        mainViewController = MainViewController();
+        mainTabViewController = NSTabViewController()
+        mainTabViewController.view.autoresizingMask = [.viewWidthSizable, .viewHeightSizable]
+        mainTabViewController.view.frame = mainViewController.view.bounds
+        mainViewController.view.addSubview(mainTabViewController.view)
+        
+        usersViewController = UsersViewController(webServiceConnector: connector)
+        
+        mainTabViewController.addChildViewController(usersViewController)
+        
+        
+        windowController.contentViewController = mainViewController
+    }
 }
 

@@ -14,16 +14,22 @@ class UsersViewController: NSViewController {
     
     var webServiceConnector: ELWebServiceConnector?
     
-    
     required init?(coder: NSCoder) {
-        self.webServiceConnector = ELWebServiceConnector(baseURL:URL(string:"http://easylogin.imoof.com:9789/whatever/v1/")!, headers: nil)
         
-        super.init(coder:coder)
+        super.init(coder: coder)
+    }
+    
+    init(webServiceConnector: ELWebServiceConnector?) {
+        
+        super.init(nibName:"UsersViewController", bundle:nil)!
+        
+        self.webServiceConnector = webServiceConnector
+        self.title = "Users" 
     }
     
     override func viewDidLoad() {
         
-        if let op = webServiceConnector?.getUserPropertiesOperation(forUserUniqueId: "2e88e5f2d5c748bbb839124f5ab3da24", completionBlock: { (userProperties: [String : Any]?, operation: CFXNetworkOperation) in
+        if let op = webServiceConnector?.getUserPropertiesOperation(forUserUniqueId: "5d30d66df8414c2daf04ba70a654edc6", completionBlock: { (userProperties: [String : Any]?, operation: CFXNetworkOperation) in
             if let userProperties = userProperties {
                 print(userProperties);
             }

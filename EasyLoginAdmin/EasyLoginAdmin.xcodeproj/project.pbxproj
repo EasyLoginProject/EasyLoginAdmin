@@ -7,10 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C458A50F1EEAA04C00B12F83 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C458A50D1EEAA04C00B12F83 /* MainViewController.swift */; };
+		C458A5101EEAA04C00B12F83 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C458A50E1EEAA04C00B12F83 /* MainViewController.xib */; };
+		C458A5161EEAAB7A00B12F83 /* UsersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C458A5151EEAAB7A00B12F83 /* UsersViewController.xib */; };
+		C458A51A1EEAB54700B12F83 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = C458A5191EEAB54700B12F83 /* MainMenu.xib */; };
 		C471D4051EBA00D70015997C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C471D4041EBA00D70015997C /* AppDelegate.swift */; };
 		C471D4071EBA00D70015997C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C471D4061EBA00D70015997C /* ViewController.swift */; };
 		C471D4091EBA00D70015997C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C471D4081EBA00D70015997C /* Assets.xcassets */; };
-		C471D40C1EBA00D70015997C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C471D40A1EBA00D70015997C /* Main.storyboard */; };
 		C4A46FD81ECB075800306580 /* libEasyLoginMacLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C4A46FD71ECB074400306580 /* libEasyLoginMacLib.a */; };
 		C4C5F9051EC073F6003C91A9 /* UsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C5F9041EC073F6003C91A9 /* UsersViewController.swift */; };
 /* End PBXBuildFile section */
@@ -26,11 +29,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C458A50D1EEAA04C00B12F83 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		C458A50E1EEAA04C00B12F83 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
+		C458A5151EEAAB7A00B12F83 /* UsersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UsersViewController.xib; sourceTree = "<group>"; };
+		C458A5191EEAB54700B12F83 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
 		C471D4011EBA00D70015997C /* EasyLoginAdmin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyLoginAdmin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C471D4041EBA00D70015997C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C471D4061EBA00D70015997C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C471D4081EBA00D70015997C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		C471D40B1EBA00D70015997C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C471D40D1EBA00D70015997C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C4A46FCD1ECB044400306580 /* EasyLoginAdmin-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EasyLoginAdmin-Bridging-Header.h"; sourceTree = "<group>"; };
 		C4A46FD21ECB074400306580 /* EasyLoginMacLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = EasyLoginMacLib.xcodeproj; path = ../../EasyLoginLibrary/EasyLoginMacLib/EasyLoginMacLib.xcodeproj; sourceTree = "<group>"; };
@@ -73,9 +79,12 @@
 				C471D4041EBA00D70015997C /* AppDelegate.swift */,
 				C471D4061EBA00D70015997C /* ViewController.swift */,
 				C4C5F9041EC073F6003C91A9 /* UsersViewController.swift */,
+				C458A5151EEAAB7A00B12F83 /* UsersViewController.xib */,
+				C458A50D1EEAA04C00B12F83 /* MainViewController.swift */,
+				C458A50E1EEAA04C00B12F83 /* MainViewController.xib */,
 				C471D4081EBA00D70015997C /* Assets.xcassets */,
-				C471D40A1EBA00D70015997C /* Main.storyboard */,
 				C471D40D1EBA00D70015997C /* Info.plist */,
+				C458A5191EEAB54700B12F83 /* MainMenu.xib */,
 			);
 			name = EasyLogin;
 			path = EasyLoginAdmin;
@@ -166,7 +175,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C471D4091EBA00D70015997C /* Assets.xcassets in Resources */,
-				C471D40C1EBA00D70015997C /* Main.storyboard in Resources */,
+				C458A5161EEAAB7A00B12F83 /* UsersViewController.xib in Resources */,
+				C458A5101EEAA04C00B12F83 /* MainViewController.xib in Resources */,
+				C458A51A1EEAB54700B12F83 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -180,21 +191,11 @@
 				C471D4071EBA00D70015997C /* ViewController.swift in Sources */,
 				C4C5F9051EC073F6003C91A9 /* UsersViewController.swift in Sources */,
 				C471D4051EBA00D70015997C /* AppDelegate.swift in Sources */,
+				C458A50F1EEAA04C00B12F83 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		C471D40A1EBA00D70015997C /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C471D40B1EBA00D70015997C /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		C471D40E1EBA00D70015997C /* Debug */ = {

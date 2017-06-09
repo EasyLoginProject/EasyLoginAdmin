@@ -26,7 +26,7 @@
 	<dict>
 		<key>NSExceptionDomains</key>
 		<dict>
-			<key>easylogin.imoof.com</key>
+			<key>develop.eu.easylogin.cloud</key>
 			<dict>
 				<key>NSExceptionAllowsInsecureHTTPLoads</key>
 				<true/>
@@ -35,9 +35,9 @@
 	</dict>
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2017 EasyLogin. All rights reserved.</string>
-	<key>NSMainStoryboardFile</key>
-	<string>Main</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+	<key>NSMainNibFile</key>
+	<string>MainMenu</string>
 </dict>
 </plist>

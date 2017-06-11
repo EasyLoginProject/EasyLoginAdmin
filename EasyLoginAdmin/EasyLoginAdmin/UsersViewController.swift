@@ -42,7 +42,7 @@ class UsersViewController: NSViewController {
         
         if let op = webServiceConnector?.getAllUsersOperation(completionBlock: { (users, op) in
             if let users = users {
-                self.usersArrayController.content = users;
+                self.usersArrayController.content = NSMutableArray.init(array: users)
                 
                 
                 // NOTE: we should block user edits until all user properties are cached
@@ -75,7 +75,25 @@ class UsersViewController: NSViewController {
     }
     
     @IBAction func addUserButtonActivated(_ sender: Any) {
-        //let newUser = ELUser(properties: ELRecordProperties(dictionary: <#T##[AnyHashable : Any]#>, mapping: nil)
+        
+        if let op = webServiceConnector?.createNewUserOperation(with: ["shortname" : "newuser",
+                                                                       "principalName" : "new.user@eu.example.com",
+                                                                       "email" : "new.user@example.com",
+                                                                       "givenName" : "New",
+                                                                       "surname" : "User",
+                                                                       "fullName" : "User, the last of them",
+                                                                       "lockedtime": "ISO TIME STAMP // What is this??", // I do now understand what's this
+                                                                       "authMethods": [
+                                                                         "cleartext": "cleartext password",
+                                                                       ]
+                                                                      ],
+                                                                completionBlock: { (user, op) in
+            if let user = user {
+                self.usersArrayController.addObject(user)
+            }
+        }) {
+            webServiceConnector?.enqueue(op)
+        }
     }
     
     @IBAction func deleteUserButtonActivated(_ sender: Any) {

@@ -26,7 +26,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="40" rowSizeStyle="automatic" headerView="Y7x-I7-1tn" viewBased="YES" id="eeG-gh-baY">
-                                <rect key="frame" x="0.0" y="0.0" width="450.5" height="268"/>
+                                <rect key="frame" x="0.0" y="0.0" width="448" height="268"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -82,11 +82,11 @@
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="ASl-93-OI0">
-                                                <rect key="frame" x="80" y="1" width="199.5" height="40"/>
+                                                <rect key="frame" x="80" y="1" width="199" height="40"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="96T-JJ-oX7">
-                                                        <rect key="frame" x="0.0" y="12" width="199.5" height="17"/>
+                                                        <rect key="frame" x="0.0" y="12" width="199" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="xcd-Qq-BOL">
                                                             <font key="font" metaFont="system"/>
@@ -104,7 +104,7 @@
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn identifier="fullName" width="166" minWidth="10" maxWidth="3.4028234663852886e+38" id="fNF-SO-LWW">
+                                    <tableColumn identifier="fullName" width="163.5" minWidth="10" maxWidth="3.4028234663852886e+38" id="fNF-SO-LWW">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Full Name">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -118,11 +118,11 @@
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView id="5We-HC-5kB">
-                                                <rect key="frame" x="282.5" y="1" width="166" height="40"/>
+                                                <rect key="frame" x="282.5" y="1" width="163" height="40"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JAG-5P-EFH">
-                                                        <rect key="frame" x="0.0" y="12" width="166" height="17"/>
+                                                        <rect key="frame" x="0.0" y="12" width="163" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="gKP-78-oe0">
                                                             <font key="font" metaFont="system"/>
@@ -149,7 +149,7 @@
                             </tableView>
                         </subviews>
                     </clipView>
-                    <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="gdP-hB-Aia">
+                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="gdP-hB-Aia">
                         <rect key="frame" x="1" y="275" width="448" height="16"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
@@ -158,7 +158,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <tableHeaderView key="headerView" id="Y7x-I7-1tn">
-                        <rect key="frame" x="0.0" y="0.0" width="450.5" height="23"/>
+                        <rect key="frame" x="0.0" y="0.0" width="448" height="23"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </tableHeaderView>
                 </scrollView>

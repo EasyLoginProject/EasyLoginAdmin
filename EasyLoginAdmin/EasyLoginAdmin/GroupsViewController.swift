@@ -3,25 +3,25 @@
 //  EasyLoginAdmin
 //
 //  Created by Aurélien Hugelé on 09/06/2017.
-//  Copyright © 2017 GroundControl. All rights reserved.
+//  Copyright © 2017 EasyLogin. All rights reserved.
 //
 
 import Cocoa
 
 class GroupsViewController: NSViewController {
     
-    let webServiceConnector: ELWebServiceConnector?
+    let server: ELServer?
     
     required init?(coder: NSCoder) {
         
-        self.webServiceConnector = nil
+        self.server = nil
         
         super.init(coder: coder)
     }
     
-    init(webServiceConnector: ELWebServiceConnector?) {
+    init(server: ELServer) {
         
-        self.webServiceConnector = webServiceConnector
+        self.server = server
         
         super.init(nibName:"GroupsViewController", bundle:nil)!
         

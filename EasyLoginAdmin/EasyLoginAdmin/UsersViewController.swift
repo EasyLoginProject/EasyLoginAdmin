@@ -12,18 +12,18 @@ class UsersViewController: NSViewController {
     @IBOutlet weak var tableView: NSTableView!
     @IBOutlet var usersArrayController: NSArrayController!
     
-    let webServiceConnector: ELWebServiceConnector?
+    let server: ELServer?
     
     required init?(coder: NSCoder) {
         
-        self.webServiceConnector = nil
+        self.server = nil
         
         super.init(coder: coder)
     }
     
-    init(webServiceConnector: ELWebServiceConnector?) {
+    init(server: ELServer) {
         
-        self.webServiceConnector = webServiceConnector
+        self.server = server
         
         super.init(nibName:"UsersViewController", bundle:nil)!
     
@@ -32,42 +32,19 @@ class UsersViewController: NSViewController {
     
     override func viewDidLoad() {
         
-//        if let op = webServiceConnector?.getUserPropertiesOperation(forUserIdentifier: "5d30d66df8414c2daf04ba70a654edc6", completionBlock: { (userProperties: [String : Any]?, operation: CFXNetworkOperation) in
-//            if let userProperties = userProperties {
-//                print(userProperties);
-//            }
-//        }) {
-//            webServiceConnector?.enqueue(op)
-//        }
-        
-        if let op = webServiceConnector?.getAllUsersOperation(completionBlock: { (users, op) in
+        server?.getAllRecords(withEntity: ELUser.recordEntity()) { (users, error) in
             if let users = users {
                 self.usersArrayController.content = NSMutableArray.init(array: users)
                 
-                
-                // NOTE: we should block user edits until all user properties are cached
-                let parallelWSC = self.webServiceConnector?.copy() as! ELWebServiceConnector
-                parallelWSC.maxConcurrentOperationCount = 10;
-                
+                // NOTE: we should lock user edits until all user properties are cached
                 for user in users {
-                    let op = parallelWSC.getUserPropertiesOperation(forUserIdentifier: user.identifier(), completionBlock: { (userProperties, op) in
-                        if let userProperties = userProperties {
-                            print(userProperties);
-                            if let recordProperties = ELRecordProperties(dictionary: userProperties, mapping: nil) {
-                                #if USE_OBJC_PROPERTIES
-                                user.__transfer(from: recordProperties)
-                                #else
-                                user.update(with: recordProperties, deletes: true)
-                                #endif
-                            }
+                    self.server?.getUpdatedRecord(user, completionBlock: { (updatedUser, error) in
+                        if(updatedUser == users.last) {
+                            // we can now unlock user edits
                         }
                     })
-                    
-                        parallelWSC.enqueue(op)
                 }
             }
-        }) {
-            webServiceConnector?.enqueue(op)
         }
         
         super.viewDidLoad()
@@ -76,23 +53,24 @@ class UsersViewController: NSViewController {
     
     @IBAction func addUserButtonActivated(_ sender: Any) {
         
-        if let op = webServiceConnector?.createNewUserOperation(with: ["shortname" : "newuser",
-                                                                       "principalName" : "new.user@eu.example.com",
-                                                                       "email" : "new.user@example.com",
-                                                                       "givenName" : "New",
-                                                                       "surname" : "User",
-                                                                       "fullName" : "User, the last of them",
-                                                                       "lockedtime": "ISO TIME STAMP // What is this??", // I do now understand what's this
-                                                                       "authMethods": [
-                                                                         "cleartext": "cleartext password",
-                                                                       ]
-                                                                      ],
-                                                                completionBlock: { (user, op) in
-            if let user = user {
-                self.usersArrayController.addObject(user)
+        
+        if let defaultUserPoperties = ELRecordProperties(dictionary: ["shortname" : "newuser",
+                                                                   "principalName" : "new.user@eu.example.com",
+                                                                   "email" : "new.user@example.com",
+                                                                   "givenName" : "New",
+                                                                   "surname" : "User",
+                                                                   "fullName" : "User, the last of them",
+                                                                   "lockedtime": "ISO TIME STAMP // What is this??", // I do not understand what's this
+            "authMethods": [
+                "cleartext": "cleartext password",
+            ]
+            ], mapping: nil) {
+            server?.createNewRecord(withEntity: ELUser.recordEntity(), properties: defaultUserPoperties) { (user, error) in
+                if let user = user {
+                    self.usersArrayController.addObject(user)
+                    self.tableView.scrollRowToVisible(self.tableView.selectedRow)
+                }
             }
-        }) {
-            webServiceConnector?.enqueue(op)
         }
     }
     

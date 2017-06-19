@@ -143,6 +143,7 @@
                                 </tableColumns>
                                 <connections>
                                     <binding destination="IJa-Qa-IWA" name="content" keyPath="arrangedObjects" id="cHb-wx-qNi"/>
+                                    <binding destination="IJa-Qa-IWA" name="selectionIndexes" keyPath="selectionIndexes" previousBinding="cHb-wx-qNi" id="Jfn-8y-7ct"/>
                                     <outlet property="dataSource" destination="-2" id="OYr-cl-hWH"/>
                                     <outlet property="delegate" destination="-2" id="Owl-7W-qNv"/>
                                 </connections>

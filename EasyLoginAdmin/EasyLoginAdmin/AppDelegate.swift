@@ -21,11 +21,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var usersViewController : UsersViewController!
     var groupsViewController : GroupsViewController! 
     
-    var connector : ELWebServiceConnector?
+    var server : ELServer!
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
     
-        connector = ELWebServiceConnector(baseURL: URL(string:baseURLString)!, headers: nil)
+        server = ELServer(baseURL: URL(string:baseURLString)!)
     
         self.setupMainUI()
         windowController.window?.makeKeyAndOrderFront(self)
@@ -45,8 +45,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         mainTabViewController.view.frame = mainViewController.view.bounds
         mainViewController.view.addSubview(mainTabViewController.view)
         
-        usersViewController = UsersViewController(webServiceConnector: connector)
-        groupsViewController = GroupsViewController(webServiceConnector: connector)
+        usersViewController = UsersViewController(server: server)
+        groupsViewController = GroupsViewController(server: server)
         
         mainTabViewController.addChildViewController(usersViewController)
         mainTabViewController.addChildViewController(groupsViewController)

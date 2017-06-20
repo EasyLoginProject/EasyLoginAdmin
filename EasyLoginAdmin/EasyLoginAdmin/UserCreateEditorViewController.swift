@@ -61,9 +61,11 @@ class UserCreateEditorViewController: NSViewController {
                     self.delegate?.createEditorViewController(self, didCreateRecord: user);
                     self.dismissViewController(self)
                 }
-                else {
-                    self.delegate?.createEditorViewController(self, didFailCreatingRecord: error);
-                    // displays the error?
+                else if let error = error {
+                    let alert = NSAlert(error: error)
+                    alert.beginSheetModal(for: self.view.window!, completionHandler: { (response) in
+                      self.delegate?.createEditorViewController(self, didFailCreatingRecord: error)
+                    })
                 }
             }
         }

@@ -53,7 +53,6 @@ class UsersViewController: NSViewController {
     
     @IBAction func addUserButtonActivated(_ sender: Any) {
         
-        
         if let defaultUserPoperties = ELRecordProperties(dictionary: ["shortname" : "newuser",
                                                                    "principalName" : "new.user@eu.example.com",
                                                                    "email" : "new.user@example.com",
@@ -65,15 +64,25 @@ class UsersViewController: NSViewController {
                 "cleartext": "cleartext password",
             ]
             ], mapping: nil) {
-            server?.createNewRecord(withEntity: ELUser.recordEntity(), properties: defaultUserPoperties) { (user, error) in
-                if let user = user {
-                    self.usersArrayController.addObject(user)
-                    self.tableView.scrollRowToVisible(self.tableView.selectedRow)
-                }
-            }
+            
+            let createEditorVC = UserCreateEditorViewController(server:server!, userProperties: defaultUserPoperties)
+            createEditorVC.delegate = self;
+            self.presentViewControllerAsSheet(createEditorVC)
         }
     }
     
     @IBAction func deleteUserButtonActivated(_ sender: Any) {
+    }
+}
+
+extension UsersViewController : RecordCreateEditorViewControllerDelegate
+{
+    func createEditorViewController(_ viewController: UserCreateEditorViewController, didCreateRecord record: ELRecord) {
+        self.usersArrayController.addObject(record)
+        self.tableView.scrollRowToVisible(self.tableView.selectedRow)
+    }
+    
+    func createEditorViewController(_ viewController: UserCreateEditorViewController, didFailCreatingRecord error: Error?) {
+        // see later
     }
 }

@@ -45,6 +45,12 @@ class UsersViewController: NSViewController {
                     })
                 }
             }
+            else if let error = error {
+                let alert = NSAlert(error: error)
+                alert.beginSheetModal(for: self.view.window!, completionHandler: { (response) in
+                    // don't don anything
+                })
+            }
         }
         
         super.viewDidLoad()

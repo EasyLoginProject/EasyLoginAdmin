@@ -17,17 +17,16 @@
 		C471D4091EBA00D70015997C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C471D4081EBA00D70015997C /* Assets.xcassets */; };
 		C48498651EF819DB00E02438 /* UserCreateEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48498631EF819DB00E02438 /* UserCreateEditorViewController.swift */; };
 		C48498661EF819DB00E02438 /* UserCreateEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C48498641EF819DB00E02438 /* UserCreateEditorViewController.xib */; };
-		C4A46FD81ECB075800306580 /* libEasyLoginMacLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C4A46FD71ECB074400306580 /* libEasyLoginMacLib.a */; };
 		C4C5F9051EC073F6003C91A9 /* UsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C5F9041EC073F6003C91A9 /* UsersViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		C4A46FD61ECB074400306580 /* PBXContainerItemProxy */ = {
+		F81854751EFC2808009FA75C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = C4A46FD21ECB074400306580 /* EasyLoginMacLib.xcodeproj */;
+			containerPortal = F818546E1EFC2808009FA75C /* EasyLoginFramework.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = C43880031EBA01370052BD2F;
-			remoteInfo = EasyLoginMacLib;
+			remoteGlobalIDString = F87E22531EE8AC0F00CB14A0;
+			remoteInfo = EasyLogin;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -45,8 +44,8 @@
 		C48498631EF819DB00E02438 /* UserCreateEditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCreateEditorViewController.swift; sourceTree = "<group>"; };
 		C48498641EF819DB00E02438 /* UserCreateEditorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserCreateEditorViewController.xib; sourceTree = "<group>"; };
 		C4A46FCD1ECB044400306580 /* EasyLoginAdmin-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EasyLoginAdmin-Bridging-Header.h"; sourceTree = "<group>"; };
-		C4A46FD21ECB074400306580 /* EasyLoginMacLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = EasyLoginMacLib.xcodeproj; path = ../../EasyLoginLibrary/EasyLoginMacLib/EasyLoginMacLib.xcodeproj; sourceTree = "<group>"; };
 		C4C5F9041EC073F6003C91A9 /* UsersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersViewController.swift; sourceTree = "<group>"; };
+		F818546E1EFC2808009FA75C /* EasyLoginFramework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = EasyLoginFramework.xcodeproj; path = ../Vendors/EasyLoginFrameworkForMac/EasyLoginFramework/EasyLoginFramework.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,7 +53,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C4A46FD81ECB075800306580 /* libEasyLoginMacLib.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,7 +62,7 @@
 		C471D3F81EBA00D70015997C = {
 			isa = PBXGroup;
 			children = (
-				C4A46FD21ECB074400306580 /* EasyLoginMacLib.xcodeproj */,
+				F818546E1EFC2808009FA75C /* EasyLoginFramework.xcodeproj */,
 				C471D4031EBA00D70015997C /* EasyLogin */,
 				C471D4021EBA00D70015997C /* Products */,
 			);
@@ -99,10 +97,10 @@
 			path = EasyLoginAdmin;
 			sourceTree = "<group>";
 		};
-		C4A46FD31ECB074400306580 /* Products */ = {
+		F818546F1EFC2808009FA75C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C4A46FD71ECB074400306580 /* libEasyLoginMacLib.a */,
+				F81854761EFC2808009FA75C /* EasyLogin.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -157,8 +155,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = C4A46FD31ECB074400306580 /* Products */;
-					ProjectRef = C4A46FD21ECB074400306580 /* EasyLoginMacLib.xcodeproj */;
+					ProductGroup = F818546F1EFC2808009FA75C /* Products */;
+					ProjectRef = F818546E1EFC2808009FA75C /* EasyLoginFramework.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -169,11 +167,11 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		C4A46FD71ECB074400306580 /* libEasyLoginMacLib.a */ = {
+		F81854761EFC2808009FA75C /* EasyLogin.framework */ = {
 			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libEasyLoginMacLib.a;
-			remoteRef = C4A46FD61ECB074400306580 /* PBXContainerItemProxy */;
+			fileType = wrapper.framework;
+			path = EasyLogin.framework;
+			remoteRef = F81854751EFC2808009FA75C /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */

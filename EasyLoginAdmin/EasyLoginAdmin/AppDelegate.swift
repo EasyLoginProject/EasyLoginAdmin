@@ -8,7 +8,7 @@
 
 import Cocoa
 
-let baseURLString = "http://demo.eu.easylogin.cloud" //"http://develop.eu.easylogin.cloud"  //"http://easylogin.imoof.com:9789/whatever/v1/"
+let baseURLString = "http://stable.eu.easylogin.me"  //"http://easylogin.imoof.com:9789/whatever/v1/"
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {

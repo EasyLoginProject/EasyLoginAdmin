@@ -26,8 +26,10 @@
 	<dict>
 		<key>NSExceptionDomains</key>
 		<dict>
-			<key>develop.eu.easylogin.cloud</key>
+			<key>easylogin.cloud</key>
 			<dict>
+				<key>NSIncludesSubdomains</key>
+				<true/>
 				<key>NSExceptionAllowsInsecureHTTPLoads</key>
 				<true/>
 			</dict>

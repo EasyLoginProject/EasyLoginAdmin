@@ -18,6 +18,7 @@
 		C48498651EF819DB00E02438 /* UserCreateEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48498631EF819DB00E02438 /* UserCreateEditorViewController.swift */; };
 		C48498661EF819DB00E02438 /* UserCreateEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C48498641EF819DB00E02438 /* UserCreateEditorViewController.xib */; };
 		C4C5F9051EC073F6003C91A9 /* UsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C5F9041EC073F6003C91A9 /* UsersViewController.swift */; };
+		F818547D1EFC2A5F009FA75C /* EasyLogin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F81854761EFC2808009FA75C /* EasyLogin.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F818547D1EFC2A5F009FA75C /* EasyLogin.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

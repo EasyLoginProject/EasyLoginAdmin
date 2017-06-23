@@ -8,6 +8,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="UsersViewController" customModule="EasyLoginAdmin" customModuleProvider="target">
             <connections>
+                <outlet property="searchField" destination="Jp1-aG-pbp" id="CyQ-Os-rxc"/>
                 <outlet property="tableView" destination="eeG-gh-baY" id="er8-j3-6Ex"/>
                 <outlet property="usersArrayController" destination="IJa-Qa-IWA" id="F5r-Cc-TbY"/>
                 <outlet property="view" destination="pPu-v6-R3Y" id="1ib-ON-3uo"/>
@@ -237,14 +238,17 @@
                 </scrollView>
                 <searchField wantsLayer="YES" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jp1-aG-pbp">
                     <rect key="frame" x="50" y="3" width="743" height="22"/>
-                    <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" id="BRe-T6-mFh">
+                    <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" sendsSearchStringImmediately="YES" id="BRe-T6-mFh">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </searchFieldCell>
+                    <connections>
+                        <action selector="searchFieldActivated:" target="-2" id="HGU-kM-OCe"/>
+                    </connections>
                 </searchField>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fiL-Ib-czx">
-                    <rect key="frame" x="3" y="2" width="21" height="23"/>
+                    <rect key="frame" x="3" y="3" width="21" height="23"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="21" id="8Cw-9R-lRZ"/>
                         <constraint firstAttribute="height" constant="21" id="wG1-YP-WHp"/>
@@ -261,7 +265,7 @@
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="h4A-T5-HXn">
-                    <rect key="frame" x="26" y="2" width="21" height="23"/>
+                    <rect key="frame" x="26" y="3" width="21" height="23"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="21" id="eQO-sQ-9ZU"/>
                         <constraint firstAttribute="height" constant="21" id="jhW-sk-h5r"/>

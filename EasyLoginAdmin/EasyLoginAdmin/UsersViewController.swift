@@ -11,6 +11,7 @@ import Cocoa
 class UsersViewController: NSViewController {
     @IBOutlet weak var tableView: NSTableView!
     @IBOutlet var usersArrayController: NSArrayController!
+    @IBOutlet weak var searchField: NSSearchField!
     
     let server: ELServer?
     
@@ -73,6 +74,31 @@ class UsersViewController: NSViewController {
     }
     
     @IBAction func deleteUserButtonActivated(_ sender: Any) {
+    }
+    
+    @IBAction func searchFieldActivated(_ sender: Any) {
+        let templateString = searchField.stringValue
+        
+        if(templateString.isEmpty == true) {
+            usersArrayController.filterPredicate = nil
+            return
+        }
+        
+        usersArrayController.filterPredicate = NSPredicate(block: { (object, bindings) -> Bool in
+            
+            let user = object as! ELUser
+            
+            for (_, value) in user.properties.dictionaryRepresentation() { // why the fuck should I use the NSDictionary representation to enumerate when ELProperties is <NSFastEnumeration> compatible???
+                
+                if let valueAsString = value as? String {
+                    if(valueAsString.range(of: templateString, options: .caseInsensitive) != nil) {
+                        return true
+                    }
+                }
+            }
+            
+            return false
+        })
     }
 }
 

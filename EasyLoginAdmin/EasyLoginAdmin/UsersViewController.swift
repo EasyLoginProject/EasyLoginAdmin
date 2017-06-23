@@ -59,13 +59,8 @@ class UsersViewController: NSViewController {
     
     @IBAction func addUserButtonActivated(_ sender: Any) {
         
-        if let defaultUserPoperties = ELRecordProperties(dictionary: ["shortname" : "newuser",
+        if let defaultUserPoperties = ELRecordProperties(dictionary: [
                                                                    "principalName" : "new.user@eu.example.com",
-                                                                   "email" : "new.user@example.com",
-                                                                   "givenName" : "New",
-                                                                   "surname" : "User",
-                                                                   "fullName" : "User, the last of them",
-                                                                   "lockedtime": "ISO TIME STAMP // What is this??", // I do not understand what's this
             "authMethods": [
                 "cleartext": "cleartext password",
             ]

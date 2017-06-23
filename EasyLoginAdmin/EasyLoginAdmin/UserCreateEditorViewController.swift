@@ -15,11 +15,21 @@ protocol RecordCreateEditorViewControllerDelegate {
 
 class UserCreateEditorViewController: NSViewController {
     
+    @IBOutlet weak var givenNameTextField: NSTextField!
+    @IBOutlet weak var surnameTextField: NSTextField!
+    @IBOutlet weak var fullNameTextField: NSTextField!
+    @IBOutlet weak var principalNameTextField: NSTextField!
+    @IBOutlet weak var shortNameTextField: NSTextField!
+    @IBOutlet weak var passwordTextField: NSSecureTextField!
+    @IBOutlet weak var passwordVerifyTextField: NSSecureTextField!
+    
     @IBOutlet weak var progressIndicator: NSProgressIndicator!
     
     var properties: ELRecordProperties?
     var server: ELServer?
     var delegate: RecordCreateEditorViewControllerDelegate?
+    
+    @objc dynamic var informationIsValid = false
     
     required init?(coder: NSCoder) {
         
@@ -53,6 +63,8 @@ class UserCreateEditorViewController: NSViewController {
     @IBAction func okButtonActivated(_ sender: Any) {
         if(self.commitEditing()) {
             progressIndicator.startAnimation(self)
+                        
+            properties?.setValue(["cleartext" : passwordTextField.stringValue], forKey: kELUserAuthenticationMethodsKey)
             
             server?.createNewRecord(withEntity: ELUser.recordEntity(), properties: properties!) { (user, error) in
                 
@@ -73,5 +85,15 @@ class UserCreateEditorViewController: NSViewController {
     
     @IBAction func cancelButtonActivated(_ sender: Any) {
         self.dismissViewController(self)
+    }
+}
+
+extension UserCreateEditorViewController : NSTextFieldDelegate
+{
+    override func controlTextDidChange(_ obj: Notification) {
+        // MARK: NOTE: are all fields compulsory?
+        // MARK: NOTE: minimum char count for password?
+
+        self.informationIsValid = givenNameTextField.stringValue.characters.count > 0 && surnameTextField.stringValue.characters.count > 0 && principalNameTextField.stringValue.characters.count > 0 && shortNameTextField.stringValue.characters.count > 0 && passwordTextField.stringValue.characters.count > 0 && passwordVerifyTextField.stringValue.characters.count > 0 && (passwordTextField.stringValue == passwordVerifyTextField.stringValue)
     }
 }

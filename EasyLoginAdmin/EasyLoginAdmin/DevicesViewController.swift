@@ -20,7 +20,7 @@ class DevicesViewController: RecordsViewController {
         
         super.init(nibName:"DevicesViewController", bundle:nil, server:server)!
         
-        self.recordEntity = ELDevice.recordEntity()
+        self.recordClass = ELDevice.self
         self.title = "Devices"
     }
 

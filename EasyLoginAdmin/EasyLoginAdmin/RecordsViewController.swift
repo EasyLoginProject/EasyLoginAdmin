@@ -15,7 +15,8 @@ class RecordsViewController : NSViewController {
     @IBOutlet weak var searchField: NSSearchField!
     
     let server: ELServer?
-    open var recordEntity = "ELRecord"
+
+    open var recordClass: AnyClass = ELRecord.self
     
     required init?(coder: NSCoder) {
         
@@ -33,7 +34,7 @@ class RecordsViewController : NSViewController {
     }
     
     override func viewDidLoad() {
-        self.fetchAllRecords(entity: self.recordEntity) { (records, error) in
+        self.fetchAllRecords(entityClass: recordClass) { (records, error) in
             if let records = records {
                 self.recordsArrayController.content = NSMutableArray(array: records) // we specifically need a NSMutableArray for Cocoa Bindings
             }
@@ -46,9 +47,10 @@ class RecordsViewController : NSViewController {
         }
     }
     
-    func fetchAllRecords(entity: String, completionBlock: (([ELRecord]?, Error?) -> Swift.Void)? = nil) {
+    func fetchAllRecords(entityClass: AnyClass, completionBlock: (([ELRecord]?, Error?) -> Swift.Void)? = nil) {
     
-        server?.getAllRecords(withEntity: entity, completionBlock: { (records, error) in
+        server?.getAllRecords(withEntityClass: entityClass as! ELRecordProtocol.Type, completionBlock: { (records, error) in
+        //server?.getAllRecords(entityClass: entityClass, completionBlock: { (records, error) in
             // NOTE: we should lock record edits until all record properties are cached
             if let records = records {
                 for record in records {
@@ -71,5 +73,30 @@ class RecordsViewController : NSViewController {
     
     @IBAction func deleteRecordButtonActivated(_ sender: Any) {
         
+    }
+    
+    @IBAction func searchFieldActivated(_ sender: Any) {
+        let templateString = searchField.stringValue
+        
+        if(templateString.isEmpty == true) {
+            recordsArrayController.filterPredicate = nil
+            return
+        }
+        
+        recordsArrayController.filterPredicate = NSPredicate(block: { (object, bindings) -> Bool in
+            
+            let record = object as! ELRecord
+            
+            for (_, value) in record.properties.dictionaryRepresentation() { // why the fuck should I use the NSDictionary representation to enumerate when ELProperties is <NSFastEnumeration> compatible???
+                
+                if let valueAsString = value as? String {
+                    if(valueAsString.range(of: templateString, options: .caseInsensitive) != nil) {
+                        return true
+                    }
+                }
+            }
+            
+            return false
+        })
     }
 }

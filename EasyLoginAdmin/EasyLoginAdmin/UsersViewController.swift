@@ -19,7 +19,7 @@ class UsersViewController: RecordsViewController {
         
         super.init(nibName:"UsersViewController", bundle:nil, server:server)!
     
-        self.recordEntity = ELUser.recordEntity()
+        self.recordClass = ELUser.self
         self.title = "Users"
     }
     
@@ -29,7 +29,7 @@ class UsersViewController: RecordsViewController {
         
     }
     
-    @IBAction func addUserButtonActivated(_ sender: Any) {
+    @IBAction override func addRecordButtonActivated(_ sender: Any) {
         
         if let defaultUserPoperties = ELRecordProperties(dictionary: [
                                                                    "principalName" : "new.user@eu.example.com",
@@ -44,33 +44,9 @@ class UsersViewController: RecordsViewController {
         }
     }
     
-    @IBAction func deleteUserButtonActivated(_ sender: Any) {
+    @IBAction override func deleteRecordButtonActivated(_ sender: Any) {
     }
     
-    @IBAction func searchFieldActivated(_ sender: Any) {
-        let templateString = searchField.stringValue
-        
-        if(templateString.isEmpty == true) {
-            recordsArrayController.filterPredicate = nil
-            return
-        }
-        
-        recordsArrayController.filterPredicate = NSPredicate(block: { (object, bindings) -> Bool in
-            
-            let user = object as! ELUser
-            
-            for (_, value) in user.properties.dictionaryRepresentation() { // why the fuck should I use the NSDictionary representation to enumerate when ELProperties is <NSFastEnumeration> compatible???
-                
-                if let valueAsString = value as? String {
-                    if(valueAsString.range(of: templateString, options: .caseInsensitive) != nil) {
-                        return true
-                    }
-                }
-            }
-            
-            return false
-        })
-    }
 }
 
 extension UsersViewController : RecordCreateEditorViewControllerDelegate

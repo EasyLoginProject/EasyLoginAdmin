@@ -44,6 +44,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         mainTabViewController = NSTabViewController()
         mainTabViewController.view.autoresizingMask = [.viewWidthSizable, .viewHeightSizable]
         mainTabViewController.view.frame = mainViewController.view.bounds
+        mainTabViewController.transitionOptions = .allowUserInteraction
         mainViewController.view.addSubview(mainTabViewController.view)
         
         usersViewController = UsersViewController(server: server)

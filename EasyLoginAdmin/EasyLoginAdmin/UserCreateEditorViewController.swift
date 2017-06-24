@@ -42,7 +42,7 @@ class UserCreateEditorViewController: NSViewController {
     init(server: ELServer, userProperties: ELRecordProperties) {
         
         self.server = server
-        self.properties = userProperties
+        self.properties = userProperties.copy() as? ELRecordProperties // must be copied since may be changed through bindings
         
         super.init(nibName: "UserCreateEditorViewController", bundle: nil)!
     }
@@ -63,11 +63,14 @@ class UserCreateEditorViewController: NSViewController {
     @IBAction func okButtonActivated(_ sender: Any) {
         if(self.commitEditing()) {
             progressIndicator.startAnimation(self)
-                        
+            
+            //at this time the email field is a compulsory to create a user. Use the principalName value and duplicate it as email
+            if(properties?.value(forKey: kELUserEmailKey) == nil) {
+                properties?.setValue(properties?.value(forKey: kELUserPrincipalNameKey), forKey: kELUserEmailKey)
+            }
             properties?.setValue(["cleartext" : passwordTextField.stringValue], forKey: kELUserAuthenticationMethodsKey)
             
-            server?.createNewRecord(withEntity: ELUser.recordEntity(), properties: properties!) { (user, error) in
-                
+            server?.createNewRecord(withEntityClass: ELUser.self, properties: properties!, completionBlock: { (user, error) in
                 self.progressIndicator.stopAnimation(self)
                 if let user = user {
                     self.delegate?.createEditorViewController(self, didCreateRecord: user);
@@ -79,7 +82,7 @@ class UserCreateEditorViewController: NSViewController {
                       self.delegate?.createEditorViewController(self, didFailCreatingRecord: error)
                     })
                 }
-            }
+            })
         }
     }
     

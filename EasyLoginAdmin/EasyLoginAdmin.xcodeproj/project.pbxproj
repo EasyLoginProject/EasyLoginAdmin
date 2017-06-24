@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C4553B9B1EFD3DC500D1CF3D /* DevicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4553B991EFD3DC500D1CF3D /* DevicesViewController.swift */; };
+		C4553B9F1EFD3E1300D1CF3D /* RecordsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4553B9E1EFD3E1300D1CF3D /* RecordsViewController.swift */; };
+		C4553BA11EFD409600D1CF3D /* DevicesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4553BA01EFD409600D1CF3D /* DevicesViewController.xib */; };
 		C458A50F1EEAA04C00B12F83 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C458A50D1EEAA04C00B12F83 /* MainViewController.swift */; };
 		C458A5101EEAA04C00B12F83 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C458A50E1EEAA04C00B12F83 /* MainViewController.xib */; };
 		C458A5161EEAAB7A00B12F83 /* UsersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C458A5151EEAAB7A00B12F83 /* UsersViewController.xib */; };
@@ -32,6 +35,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C4553B991EFD3DC500D1CF3D /* DevicesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DevicesViewController.swift; sourceTree = "<group>"; };
+		C4553B9E1EFD3E1300D1CF3D /* RecordsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordsViewController.swift; sourceTree = "<group>"; };
+		C4553BA01EFD409600D1CF3D /* DevicesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DevicesViewController.xib; sourceTree = "<group>"; };
 		C458A50D1EEAA04C00B12F83 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		C458A50E1EEAA04C00B12F83 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		C458A5151EEAAB7A00B12F83 /* UsersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UsersViewController.xib; sourceTree = "<group>"; };
@@ -85,8 +91,11 @@
 				C471D4041EBA00D70015997C /* AppDelegate.swift */,
 				C458A50D1EEAA04C00B12F83 /* MainViewController.swift */,
 				C458A50E1EEAA04C00B12F83 /* MainViewController.xib */,
+				C4553B9E1EFD3E1300D1CF3D /* RecordsViewController.swift */,
 				C4C5F9041EC073F6003C91A9 /* UsersViewController.swift */,
 				C458A5151EEAAB7A00B12F83 /* UsersViewController.xib */,
+				C4553B991EFD3DC500D1CF3D /* DevicesViewController.swift */,
+				C4553BA01EFD409600D1CF3D /* DevicesViewController.xib */,
 				C48498631EF819DB00E02438 /* UserCreateEditorViewController.swift */,
 				C48498641EF819DB00E02438 /* UserCreateEditorViewController.xib */,
 				C458A51B1EEABE3F00B12F83 /* GroupsViewController.swift */,
@@ -185,6 +194,7 @@
 			files = (
 				C48498661EF819DB00E02438 /* UserCreateEditorViewController.xib in Resources */,
 				C471D4091EBA00D70015997C /* Assets.xcassets in Resources */,
+				C4553BA11EFD409600D1CF3D /* DevicesViewController.xib in Resources */,
 				C458A5161EEAAB7A00B12F83 /* UsersViewController.xib in Resources */,
 				C458A51E1EEABE3F00B12F83 /* GroupsViewController.xib in Resources */,
 				C458A5101EEAA04C00B12F83 /* MainViewController.xib in Resources */,
@@ -200,9 +210,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				C48498651EF819DB00E02438 /* UserCreateEditorViewController.swift in Sources */,
+				C4553B9F1EFD3E1300D1CF3D /* RecordsViewController.swift in Sources */,
 				C4C5F9051EC073F6003C91A9 /* UsersViewController.swift in Sources */,
 				C471D4051EBA00D70015997C /* AppDelegate.swift in Sources */,
 				C458A50F1EEAA04C00B12F83 /* MainViewController.swift in Sources */,
+				C4553B9B1EFD3DC500D1CF3D /* DevicesViewController.swift in Sources */,
 				C458A51D1EEABE3F00B12F83 /* GroupsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

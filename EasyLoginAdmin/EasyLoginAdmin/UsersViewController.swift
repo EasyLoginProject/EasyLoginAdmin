@@ -8,52 +8,23 @@
 
 import Cocoa
 
-class UsersViewController: NSViewController {
-    @IBOutlet weak var tableView: NSTableView!
-    @IBOutlet var usersArrayController: NSArrayController!
-    @IBOutlet weak var searchField: NSSearchField!
-    
-    let server: ELServer?
+class UsersViewController: RecordsViewController {
     
     required init?(coder: NSCoder) {
-        
-        self.server = nil
         
         super.init(coder: coder)
     }
     
     init(server: ELServer) {
         
-        self.server = server
-        
-        super.init(nibName:"UsersViewController", bundle:nil)!
+        super.init(nibName:"UsersViewController", bundle:nil, server:server)!
     
+        self.recordEntity = ELUser.recordEntity()
         self.title = "Users"
     }
     
     override func viewDidLoad() {
-        
-        server?.getAllRecords(withEntity: ELUser.recordEntity()) { (users, error) in
-            if let users = users {
-                self.usersArrayController.content = NSMutableArray.init(array: users)
                 
-                // NOTE: we should lock user edits until all user properties are cached
-                for user in users {
-                    self.server?.getUpdatedRecord(user, completionBlock: { (updatedUser, error) in
-                        if(updatedUser == users.last) {
-                            // we can now unlock user edits
-                        }
-                    })
-                }
-            }
-            else if let error = error {
-                let alert = NSAlert(error: error)
-                alert.beginSheetModal(for: self.view.window!, completionHandler: { (response) in
-                    // don't don anything
-                })
-            }
-        }
-        
         super.viewDidLoad()
         
     }
@@ -80,11 +51,11 @@ class UsersViewController: NSViewController {
         let templateString = searchField.stringValue
         
         if(templateString.isEmpty == true) {
-            usersArrayController.filterPredicate = nil
+            recordsArrayController.filterPredicate = nil
             return
         }
         
-        usersArrayController.filterPredicate = NSPredicate(block: { (object, bindings) -> Bool in
+        recordsArrayController.filterPredicate = NSPredicate(block: { (object, bindings) -> Bool in
             
             let user = object as! ELUser
             
@@ -105,7 +76,7 @@ class UsersViewController: NSViewController {
 extension UsersViewController : RecordCreateEditorViewControllerDelegate
 {
     func createEditorViewController(_ viewController: UserCreateEditorViewController, didCreateRecord record: ELRecord) {
-        self.usersArrayController.addObject(record)
+        self.recordsArrayController.addObject(record)
         self.tableView.scrollRowToVisible(self.tableView.selectedRow)
     }
     

@@ -19,6 +19,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var mainViewController : MainViewController!
     var mainTabViewController : NSTabViewController!
     var usersViewController : UsersViewController!
+    var devicesViewController : DevicesViewController!
     var groupsViewController : GroupsViewController! 
     
     var server : ELServer!
@@ -46,10 +47,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         mainViewController.view.addSubview(mainTabViewController.view)
         
         usersViewController = UsersViewController(server: server)
+        devicesViewController = DevicesViewController(server: server)
         groupsViewController = GroupsViewController(server: server)
         
         mainTabViewController.addChildViewController(usersViewController)
-        mainTabViewController.addChildViewController(groupsViewController)
+        mainTabViewController.addChildViewController(devicesViewController)
+        //mainTabViewController.addChildViewController(groupsViewController)
         
         windowController.contentViewController = mainViewController
     }

@@ -13,6 +13,8 @@ class RecordsViewController : NSViewController {
     @IBOutlet weak var tableView: NSTableView!
     @IBOutlet var recordsArrayController: NSArrayController!
     @IBOutlet weak var searchField: NSSearchField!
+    @IBOutlet weak var progressIndicator: NSProgressIndicator!
+    @IBOutlet weak var searchFieldTrailingContstraint: NSLayoutConstraint!
     
     let server: ELServer?
 
@@ -34,6 +36,9 @@ class RecordsViewController : NSViewController {
     }
     
     override func viewDidLoad() {
+        
+        searchFieldTrailingContstraint.constant = 6;
+        
         self.fetchAllRecords(entityClass: recordClass) { (records, error) in
             if let records = records {
                 self.recordsArrayController.content = NSMutableArray(array: records) // we specifically need a NSMutableArray for Cocoa Bindings
@@ -49,6 +54,8 @@ class RecordsViewController : NSViewController {
     
     func fetchAllRecords(entityClass: AnyClass, completionBlock: (([ELRecord]?, Error?) -> Swift.Void)? = nil) {
     
+        searchFieldTrailingContstraint.constant = 30;
+        progressIndicator.startAnimation(self)
         server?.getAllRecords(withEntityClass: entityClass as! ELRecordProtocol.Type, completionBlock: { (records, error) in
         //server?.getAllRecords(entityClass: entityClass, completionBlock: { (records, error) in
             // NOTE: we should lock record edits until all record properties are cached
@@ -56,16 +63,29 @@ class RecordsViewController : NSViewController {
                 for record in records {
                     self.server?.getUpdatedRecord(record, completionBlock: { (updatedRecord, error) in
                         if(updatedRecord == records.last) {
+                            self.searchFieldTrailingContstraint.constant = 6;
+                            self.progressIndicator.stopAnimation(self)
+                            
                             completionBlock?(records, nil)
                         }
                     })
                 }
             }
             else {
+                self.searchFieldTrailingContstraint.constant = 6;
+                self.progressIndicator.stopAnimation(self)
+
                 completionBlock?(nil, error)
             }
         })
     }
+    
+    // MARK: - Actions
+    
+    @IBAction func tableViewDoubleClickActivated(_ sender: Any) {
+        // NOTE: we should lock record edits until all record properties are cached
+    }
+
     
     @IBAction func addRecordButtonActivated(_ sender: Any) {
         

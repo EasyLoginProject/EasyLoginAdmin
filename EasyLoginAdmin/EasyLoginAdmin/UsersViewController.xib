@@ -8,8 +8,10 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="UsersViewController" customModule="EasyLoginAdmin" customModuleProvider="target">
             <connections>
+                <outlet property="progressIndicator" destination="3f4-au-QeP" id="dPE-aJ-6ib"/>
                 <outlet property="recordsArrayController" destination="IJa-Qa-IWA" id="TZF-eF-KeB"/>
                 <outlet property="searchField" destination="Jp1-aG-pbp" id="CyQ-Os-rxc"/>
+                <outlet property="searchFieldTrailingContstraint" destination="Miw-bk-YHV" id="8N9-1C-LxB"/>
                 <outlet property="tableView" destination="eeG-gh-baY" id="er8-j3-6Ex"/>
                 <outlet property="view" destination="pPu-v6-R3Y" id="1ib-ON-3uo"/>
             </connections>
@@ -215,6 +217,7 @@
                                     </tableColumn>
                                 </tableColumns>
                                 <connections>
+                                    <action trigger="doubleAction" selector="tableViewDoubleClickActivated:" target="-2" id="nc5-ze-Mrm"/>
                                     <binding destination="IJa-Qa-IWA" name="content" keyPath="arrangedObjects" id="cHb-wx-qNi"/>
                                     <binding destination="IJa-Qa-IWA" name="selectionIndexes" keyPath="selectionIndexes" previousBinding="cHb-wx-qNi" id="Jfn-8y-7ct"/>
                                     <outlet property="dataSource" destination="-2" id="OYr-cl-hWH"/>
@@ -237,7 +240,7 @@
                     </tableHeaderView>
                 </scrollView>
                 <searchField wantsLayer="YES" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jp1-aG-pbp">
-                    <rect key="frame" x="50" y="3" width="743" height="22"/>
+                    <rect key="frame" x="50" y="3" width="716" height="22"/>
                     <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" sendsSearchStringImmediately="YES" id="BRe-T6-mFh">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -277,19 +280,25 @@
                         <binding destination="IJa-Qa-IWA" name="enabled" keyPath="canRemove" id="MnZ-Hq-nh5"/>
                     </connections>
                 </button>
+                <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="3f4-au-QeP">
+                    <rect key="frame" x="772" y="6" width="16" height="16"/>
+                </progressIndicator>
             </subviews>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="lrW-Kp-zNI" secondAttribute="trailing" id="Aw9-sR-rNU"/>
                 <constraint firstItem="h4A-T5-HXn" firstAttribute="centerY" secondItem="fiL-Ib-czx" secondAttribute="centerY" id="ERx-Pg-W39"/>
                 <constraint firstItem="lrW-Kp-zNI" firstAttribute="top" secondItem="pPu-v6-R3Y" secondAttribute="top" id="HH9-oN-nkK"/>
                 <constraint firstItem="Jp1-aG-pbp" firstAttribute="top" secondItem="lrW-Kp-zNI" secondAttribute="bottom" constant="3" id="K9a-CH-ZIu"/>
+                <constraint firstAttribute="trailing" secondItem="Jp1-aG-pbp" secondAttribute="trailing" constant="30" id="Miw-bk-YHV"/>
                 <constraint firstItem="h4A-T5-HXn" firstAttribute="centerY" secondItem="Jp1-aG-pbp" secondAttribute="centerY" id="Oxd-6v-4ti"/>
-                <constraint firstAttribute="trailing" secondItem="Jp1-aG-pbp" secondAttribute="trailing" constant="3" id="QzC-ZJ-e97"/>
                 <constraint firstAttribute="bottom" secondItem="Jp1-aG-pbp" secondAttribute="bottom" constant="3" id="T0E-zD-qip"/>
                 <constraint firstItem="h4A-T5-HXn" firstAttribute="leading" secondItem="fiL-Ib-czx" secondAttribute="trailing" constant="2" id="gH6-eb-koW"/>
+                <constraint firstAttribute="trailing" secondItem="3f4-au-QeP" secondAttribute="trailing" constant="8" id="gwe-RD-ERF"/>
                 <constraint firstItem="lrW-Kp-zNI" firstAttribute="leading" secondItem="pPu-v6-R3Y" secondAttribute="leading" id="hPn-pl-JZ2"/>
                 <constraint firstItem="Jp1-aG-pbp" firstAttribute="leading" secondItem="h4A-T5-HXn" secondAttribute="trailing" constant="3" id="pBc-mv-U6h"/>
+                <constraint firstAttribute="bottom" secondItem="3f4-au-QeP" secondAttribute="bottom" constant="6" id="tLV-gu-zdB"/>
                 <constraint firstItem="fiL-Ib-czx" firstAttribute="leading" secondItem="pPu-v6-R3Y" secondAttribute="leading" constant="3" id="wiv-jS-lHL"/>
+                <constraint firstItem="3f4-au-QeP" firstAttribute="centerY" secondItem="Jp1-aG-pbp" secondAttribute="centerY" id="y8p-Jh-1oW"/>
             </constraints>
             <point key="canvasLocation" x="312" y="186.5"/>
         </view>

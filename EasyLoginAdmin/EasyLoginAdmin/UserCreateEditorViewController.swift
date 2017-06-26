@@ -15,6 +15,8 @@ protocol RecordCreateEditorViewControllerDelegate {
 
 class UserCreateEditorViewController: NSViewController {
     
+    @IBOutlet weak var tabView: NSTabView!
+    
     @IBOutlet weak var givenNameTextField: NSTextField!
     @IBOutlet weak var surnameTextField: NSTextField!
     @IBOutlet weak var fullNameTextField: NSTextField!
@@ -27,7 +29,7 @@ class UserCreateEditorViewController: NSViewController {
     
     var properties: ELRecordProperties?
     var server: ELServer?
-    var delegate: RecordCreateEditorViewControllerDelegate?
+    open var delegate: RecordCreateEditorViewControllerDelegate?
     
     @objc dynamic var informationIsValid = false
     var fullNameWasUserEdited = false
@@ -40,13 +42,20 @@ class UserCreateEditorViewController: NSViewController {
         super.init(coder: coder)
     }
     
-    init(server: ELServer, userProperties: ELRecordProperties) {
+    convenience init(server: ELServer, userProperties: ELRecordProperties) {
+        
+        self.init(server: server, userProperties: userProperties, nibName: "UserCreateEditorViewController")
+    }
+    
+    init(server: ELServer, userProperties: ELRecordProperties, nibName: String?) {
         
         self.server = server
         self.properties = userProperties.copy() as? ELRecordProperties // must be copied since may be changed through bindings
         
-        super.init(nibName: "UserCreateEditorViewController", bundle: nil)!
+        super.init(nibName: nibName, bundle: nil)!
     }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,7 +70,7 @@ class UserCreateEditorViewController: NSViewController {
     
     // MARK: - Actions
     
-    @IBAction func okButtonActivated(_ sender: Any) {
+    @IBAction open func okButtonActivated(_ sender: Any) {
         if(self.commitEditing()) {
             progressIndicator.startAnimation(self)
             
@@ -70,25 +79,31 @@ class UserCreateEditorViewController: NSViewController {
                 properties?.setValue(properties?.value(forKey: kELUserPrincipalNameKey), forKey: kELUserEmailKey)
             }
             properties?.setValue([kELRecordAuthenticationMethodClearTextKey: passwordTextField.stringValue], forKey: kELRecordAuthenticationMethodsKey)
-            
-            server?.createNewRecord(withEntityClass: ELUser.self, properties: properties!, completionBlock: { (user, error) in
-                self.progressIndicator.stopAnimation(self)
-                if let user = user {
-                    self.delegate?.createEditorViewController(self, didCreateRecord: user);
-                    self.dismissViewController(self)
-                }
-                else if let error = error {
-                    let alert = NSAlert(error: error)
-                    alert.beginSheetModal(for: self.view.window!, completionHandler: { (response) in
-                      self.delegate?.createEditorViewController(self, didFailCreatingRecord: error)
-                    })
-                }
-            })
+          
+            performCore()
         }
     }
     
-    @IBAction func cancelButtonActivated(_ sender: Any) {
+    @IBAction open func cancelButtonActivated(_ sender: Any) {
         self.dismissViewController(self)
+    }
+    
+    //MARK: - Made to be overriden
+    
+    open func performCore() { // typically overriden by subclasses to edit an existing user instead of create a new user
+        server?.createNewRecord(withEntityClass: ELUser.self, properties: properties!, completionBlock: { (user, error) in
+            self.progressIndicator.stopAnimation(self)
+            if let user = user {
+                self.delegate?.createEditorViewController(self, didCreateRecord: user);
+                self.dismissViewController(self)
+            }
+            else if let error = error {
+                let alert = NSAlert(error: error)
+                alert.beginSheetModal(for: self.view.window!, completionHandler: { (response) in
+                    self.delegate?.createEditorViewController(self, didFailCreatingRecord: error)
+                })
+            }
+        })
     }
 }
 
@@ -107,6 +122,11 @@ extension UserCreateEditorViewController : NSTextFieldDelegate
             fullNameTextField.stringValue = givenNameTextField.stringValue + " " + surnameTextField.stringValue
         }
 
-        self.informationIsValid = givenNameTextField.stringValue.characters.count > 0 && surnameTextField.stringValue.characters.count > 0 && fullNameTextField.stringValue.characters.count > 0 && principalNameTextField.stringValue.characters.count > 0 && shortNameTextField.stringValue.characters.count > 0 && passwordTextField.stringValue.characters.count > 0 && passwordVerifyTextField.stringValue.characters.count > 0 && (passwordTextField.stringValue == passwordVerifyTextField.stringValue)
+        self.informationIsValid = validateInformation()
+    }
+    
+    func validateInformation() -> Bool
+    {
+        return givenNameTextField.stringValue.characters.count > 0 && surnameTextField.stringValue.characters.count > 0 && fullNameTextField.stringValue.characters.count > 0 && principalNameTextField.stringValue.characters.count > 0 && shortNameTextField.stringValue.characters.count > 0 && passwordTextField.stringValue.characters.count > 0 && passwordVerifyTextField.stringValue.characters.count > 0 && (passwordTextField.stringValue == passwordVerifyTextField.stringValue)
     }
 }

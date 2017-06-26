@@ -14,13 +14,13 @@
 		C458A5101EEAA04C00B12F83 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C458A50E1EEAA04C00B12F83 /* MainViewController.xib */; };
 		C458A5161EEAAB7A00B12F83 /* UsersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C458A5151EEAAB7A00B12F83 /* UsersViewController.xib */; };
 		C458A51A1EEAB54700B12F83 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = C458A5191EEAB54700B12F83 /* MainMenu.xib */; };
-		C458A51D1EEABE3F00B12F83 /* GroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C458A51B1EEABE3F00B12F83 /* GroupsViewController.swift */; };
-		C458A51E1EEABE3F00B12F83 /* GroupsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C458A51C1EEABE3F00B12F83 /* GroupsViewController.xib */; };
 		C471D4051EBA00D70015997C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C471D4041EBA00D70015997C /* AppDelegate.swift */; };
 		C471D4091EBA00D70015997C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C471D4081EBA00D70015997C /* Assets.xcassets */; };
 		C48498651EF819DB00E02438 /* UserCreateEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48498631EF819DB00E02438 /* UserCreateEditorViewController.swift */; };
 		C48498661EF819DB00E02438 /* UserCreateEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C48498641EF819DB00E02438 /* UserCreateEditorViewController.xib */; };
 		C4C5F9051EC073F6003C91A9 /* UsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C5F9041EC073F6003C91A9 /* UsersViewController.swift */; };
+		C4C678301F011C7C00BD26F7 /* UserModifyEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C6782E1F011C7C00BD26F7 /* UserModifyEditorViewController.swift */; };
+		C4C678341F0131B600BD26F7 /* UserModifyEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4C678331F0131B600BD26F7 /* UserModifyEditorViewController.xib */; };
 		F818547D1EFC2A5F009FA75C /* EasyLogin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F81854761EFC2808009FA75C /* EasyLogin.framework */; };
 /* End PBXBuildFile section */
 
@@ -42,8 +42,6 @@
 		C458A50E1EEAA04C00B12F83 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		C458A5151EEAAB7A00B12F83 /* UsersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UsersViewController.xib; sourceTree = "<group>"; };
 		C458A5191EEAB54700B12F83 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
-		C458A51B1EEABE3F00B12F83 /* GroupsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupsViewController.swift; sourceTree = "<group>"; };
-		C458A51C1EEABE3F00B12F83 /* GroupsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GroupsViewController.xib; sourceTree = "<group>"; };
 		C471D4011EBA00D70015997C /* EasyLoginAdmin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyLoginAdmin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C471D4041EBA00D70015997C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C471D4081EBA00D70015997C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -52,6 +50,8 @@
 		C48498641EF819DB00E02438 /* UserCreateEditorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserCreateEditorViewController.xib; sourceTree = "<group>"; };
 		C4A46FCD1ECB044400306580 /* EasyLoginAdmin-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EasyLoginAdmin-Bridging-Header.h"; sourceTree = "<group>"; };
 		C4C5F9041EC073F6003C91A9 /* UsersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersViewController.swift; sourceTree = "<group>"; };
+		C4C6782E1F011C7C00BD26F7 /* UserModifyEditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModifyEditorViewController.swift; sourceTree = "<group>"; };
+		C4C678331F0131B600BD26F7 /* UserModifyEditorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserModifyEditorViewController.xib; sourceTree = "<group>"; };
 		F818546E1EFC2808009FA75C /* EasyLoginFramework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = EasyLoginFramework.xcodeproj; path = ../Vendors/EasyLoginFrameworkForMac/EasyLoginFramework/EasyLoginFramework.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -98,8 +98,8 @@
 				C4553BA01EFD409600D1CF3D /* DevicesViewController.xib */,
 				C48498631EF819DB00E02438 /* UserCreateEditorViewController.swift */,
 				C48498641EF819DB00E02438 /* UserCreateEditorViewController.xib */,
-				C458A51B1EEABE3F00B12F83 /* GroupsViewController.swift */,
-				C458A51C1EEABE3F00B12F83 /* GroupsViewController.xib */,
+				C4C6782E1F011C7C00BD26F7 /* UserModifyEditorViewController.swift */,
+				C4C678331F0131B600BD26F7 /* UserModifyEditorViewController.xib */,
 				C471D4081EBA00D70015997C /* Assets.xcassets */,
 				C471D40D1EBA00D70015997C /* Info.plist */,
 				C458A5191EEAB54700B12F83 /* MainMenu.xib */,
@@ -192,11 +192,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4C678341F0131B600BD26F7 /* UserModifyEditorViewController.xib in Resources */,
 				C48498661EF819DB00E02438 /* UserCreateEditorViewController.xib in Resources */,
 				C471D4091EBA00D70015997C /* Assets.xcassets in Resources */,
 				C4553BA11EFD409600D1CF3D /* DevicesViewController.xib in Resources */,
 				C458A5161EEAAB7A00B12F83 /* UsersViewController.xib in Resources */,
-				C458A51E1EEABE3F00B12F83 /* GroupsViewController.xib in Resources */,
 				C458A5101EEAA04C00B12F83 /* MainViewController.xib in Resources */,
 				C458A51A1EEAB54700B12F83 /* MainMenu.xib in Resources */,
 			);
@@ -213,9 +213,9 @@
 				C4553B9F1EFD3E1300D1CF3D /* RecordsViewController.swift in Sources */,
 				C4C5F9051EC073F6003C91A9 /* UsersViewController.swift in Sources */,
 				C471D4051EBA00D70015997C /* AppDelegate.swift in Sources */,
+				C4C678301F011C7C00BD26F7 /* UserModifyEditorViewController.swift in Sources */,
 				C458A50F1EEAA04C00B12F83 /* MainViewController.swift in Sources */,
 				C4553B9B1EFD3DC500D1CF3D /* DevicesViewController.swift in Sources */,
-				C458A51D1EEABE3F00B12F83 /* GroupsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

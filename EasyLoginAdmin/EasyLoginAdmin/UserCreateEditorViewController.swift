@@ -30,6 +30,7 @@ class UserCreateEditorViewController: NSViewController {
     var delegate: RecordCreateEditorViewControllerDelegate?
     
     @objc dynamic var informationIsValid = false
+    var fullNameWasUserEdited = false
     
     required init?(coder: NSCoder) {
         
@@ -94,9 +95,18 @@ class UserCreateEditorViewController: NSViewController {
 extension UserCreateEditorViewController : NSTextFieldDelegate
 {
     override func controlTextDidChange(_ obj: Notification) {
-        // MARK: NOTE: are all fields compulsory?
+        // MARK: NOTE: are all fields compulsory -> YES
         // MARK: NOTE: minimum char count for password?
+        
+        let sender: NSTextField = obj.object as! NSTextField
+        
+        if(sender == fullNameTextField) {
+            fullNameWasUserEdited = fullNameTextField.stringValue.isEmpty ? false : true // reset automatic filling on clear
+        }
+        else if(fullNameWasUserEdited == false && (sender == givenNameTextField || sender == surnameTextField)) {
+            fullNameTextField.stringValue = givenNameTextField.stringValue + " " + surnameTextField.stringValue
+        }
 
-        self.informationIsValid = givenNameTextField.stringValue.characters.count > 0 && surnameTextField.stringValue.characters.count > 0 && principalNameTextField.stringValue.characters.count > 0 && shortNameTextField.stringValue.characters.count > 0 && passwordTextField.stringValue.characters.count > 0 && passwordVerifyTextField.stringValue.characters.count > 0 && (passwordTextField.stringValue == passwordVerifyTextField.stringValue)
+        self.informationIsValid = givenNameTextField.stringValue.characters.count > 0 && surnameTextField.stringValue.characters.count > 0 && fullNameTextField.stringValue.characters.count > 0 && principalNameTextField.stringValue.characters.count > 0 && shortNameTextField.stringValue.characters.count > 0 && passwordTextField.stringValue.characters.count > 0 && passwordVerifyTextField.stringValue.characters.count > 0 && (passwordTextField.stringValue == passwordVerifyTextField.stringValue)
     }
 }

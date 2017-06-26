@@ -68,7 +68,7 @@ class UserCreateEditorViewController: NSViewController {
             if(properties?.value(forKey: kELUserEmailKey) == nil) {
                 properties?.setValue(properties?.value(forKey: kELUserPrincipalNameKey), forKey: kELUserEmailKey)
             }
-            properties?.setValue(["cleartext" : passwordTextField.stringValue], forKey: kELUserAuthenticationMethodsKey)
+            properties?.setValue([kELRecordAuthenticationMethodClearTextKey: passwordTextField.stringValue], forKey: kELRecordAuthenticationMethodsKey)
             
             server?.createNewRecord(withEntityClass: ELUser.self, properties: properties!, completionBlock: { (user, error) in
                 self.progressIndicator.stopAnimation(self)

@@ -103,7 +103,7 @@ Gw
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                         <connections>
-                                            <binding destination="-2" name="value" keyPath="properties.fullName" id="O5K-Da-xYB"/>
+                                            <binding destination="-2" name="value" keyPath="properties.fullName" id="NFZ-5u-SGF"/>
                                             <outlet property="delegate" destination="-2" id="gvK-gD-cUr"/>
                                         </connections>
                                     </textField>

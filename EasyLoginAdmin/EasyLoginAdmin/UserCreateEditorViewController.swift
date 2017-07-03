@@ -118,8 +118,9 @@ extension UserCreateEditorViewController : NSTextFieldDelegate
         if(sender == fullNameTextField) {
             fullNameWasUserEdited = fullNameTextField.stringValue.isEmpty ? false : true // reset automatic filling on clear
         }
-        else if(fullNameWasUserEdited == false && (sender == givenNameTextField || sender == surnameTextField)) {
-            fullNameTextField.stringValue = givenNameTextField.stringValue + " " + surnameTextField.stringValue
+        else if(fullNameWasUserEdited == false && (sender == givenNameTextField || sender == surnameTextField)) { // handle KVO manually only if not user edited, but automatically filled
+            let fullName = givenNameTextField.stringValue + " " + surnameTextField.stringValue
+            self.properties?.setValue(fullName, forKey: kELUserFullNameKey)
         }
 
         self.informationIsValid = validateInformation()

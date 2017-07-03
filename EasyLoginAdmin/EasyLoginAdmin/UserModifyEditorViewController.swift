@@ -40,10 +40,12 @@ class UserModifyEditorViewController: UserCreateEditorViewController {
         
         super.init(server: server, userProperties: tmpProperties, nibName: "UserModifyEditorViewController")
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do view setup here.
+    
+        fullNameWasUserEdited = (fullNameTextField.stringValue != (givenNameTextField.stringValue + " " + surnameTextField.stringValue))
+        
     }
     
     // MARK: - Actions
@@ -52,22 +54,27 @@ class UserModifyEditorViewController: UserCreateEditorViewController {
         if(self.commitEditing()) {
             progressIndicator.startAnimation(self)
             
-//            //at this time the email field is a compulsory to create a user. Use the principalName value and duplicate it as email
-//            if(properties?.value(forKey: kELUserEmailKey) == nil) {
-//                properties?.setValue(properties?.value(forKey: kELUserPrincipalNameKey), forKey: kELUserEmailKey)
-//            }
-//            properties?.setValue([kELRecordAuthenticationMethodClearTextKey: passwordTextField.stringValue], forKey: kELRecordAuthenticationMethodsKey)
+            //            //at this time the email field is a compulsory to create a user. Use the principalName value and duplicate it as email
+            //            if(properties?.value(forKey: kELUserEmailKey) == nil) {
+            //                properties?.setValue(properties?.value(forKey: kELUserPrincipalNameKey), forKey: kELUserEmailKey)
+            //            }
+            //            properties?.setValue([kELRecordAuthenticationMethodClearTextKey: passwordTextField.stringValue], forKey: kELRecordAuthenticationMethodsKey)
             
             performCore()
         }
     }
-
+    
     
     @IBAction func changePasswordButtonActivated(_ sender: Any) {
         self.tabView.window?.beginSheet(changePasswordPanel, completionHandler: { (response) in
             if(response == NSModalResponseStop) {
                 // maybe a specific call instead of using properties?
                 //properties?.setValue(passwordTextField, forKey: ....)
+                
+                // do we want to change the password now or wait for the parent sheet to be closed with the OK button?
+            }
+            else {
+                self.changePasswordInformationIsValid = false
             }
         })
     }
@@ -83,22 +90,41 @@ class UserModifyEditorViewController: UserCreateEditorViewController {
     
     override func performCore() { // typically overriden by subclasses to edit an existing user instead of create a new user
         if let updatedProperties: ELRecordProperties = self.record?.properties.difference(with: self.properties!, deletes: true) {// we want to extract only the updated properties. Because we *copied* the record properties on init, we should be able to diff despite using Cocoa Bindings...
-        server?.update(self.record!, withUpdatedProperties: updatedProperties, completionBlock: { (success, error) in
-            self.progressIndicator.stopAnimation(self)
-            if success {
-                self.delegate_overriden?.modifyEditorViewController(self, didModifyRecord: self.record!);
-                self.dismissViewController(self)
-            }
-            else if let error = error {
-                let alert = NSAlert(error: error)
-                alert.beginSheetModal(for: self.view.window!, completionHandler: { (response) in
-                    self.delegate_overriden?.modifyEditorViewController(self, didFailModifyingRecord: error)
-                })
-            }
-        })
+            server?.update(self.record!, withUpdatedProperties: updatedProperties, completionBlock: { (updatedRecord, error) in
+                self.progressIndicator.stopAnimation(self)
+                if updatedRecord != nil {
+                    if(self.changePasswordInformationIsValid) { // true if password was tried to be changed
+                        // currently there is no password change API, use the standard properties update API
+//                        self.server?.update(self.record!, withNewPassword: self.passwordTextField.stringValue, usingOldPassword: "old password???", completionBlock: { (updatedRecord, error) in
+                        // to change password, update the "authMethods" property with a clear text password
+                        self.server?.update(self.record!, withUpdatedProperties: ELRecordProperties(dictionary: [kELRecordAuthenticationMethodsKey : [kELRecordAuthenticationMethodClearTextKey : self.passwordTextField.stringValue]], mapping:nil)!, completionBlock: { (updatedRecord, error) in
+                            if updatedRecord != nil {
+                                self.delegate_overriden?.modifyEditorViewController(self, didModifyRecord: self.record!);
+                                self.dismissViewController(self)
+                            }
+                            else if let error = error {
+                                let alert = NSAlert(error: error)
+                                alert.beginSheetModal(for: self.view.window!, completionHandler: { (response) in
+                                    self.delegate_overriden?.modifyEditorViewController(self, didFailModifyingRecord: error)
+                                })
+                            }
+                        })
+                    }
+                    else {
+                        self.delegate_overriden?.modifyEditorViewController(self, didModifyRecord: self.record!);
+                        self.dismissViewController(self)
+                    }
+                }
+                else if let error = error {
+                    let alert = NSAlert(error: error)
+                    alert.beginSheetModal(for: self.view.window!, completionHandler: { (response) in
+                        self.delegate_overriden?.modifyEditorViewController(self, didFailModifyingRecord: error)
+                    })
+                }
+            })
         }
     }
-
+    
     
     // MARK: - Delegate
     
@@ -116,12 +142,12 @@ class UserModifyEditorViewController: UserCreateEditorViewController {
     
     override func validateInformation() -> Bool
     {
-        return givenNameTextField.stringValue.characters.count > 0 && surnameTextField.stringValue.characters.count > 0 && fullNameTextField.stringValue.characters.count > 0 && principalNameTextField.stringValue.characters.count > 0 && shortNameTextField.stringValue.characters.count > 0 // do not validate password here
+        return givenNameTextField.stringValue.characters.count > 0 && surnameTextField.stringValue.characters.count > 0 && fullNameTextField.stringValue.characters.count > 0 && principalNameTextField.stringValue.characters.count > 0 && shortNameTextField.stringValue.characters.count > 0 // do not validate password here, use validateChangePasswordInformation() instead
     }
     
     func validateChangePasswordInformation() -> Bool
     {
         return passwordTextField.stringValue.characters.count > 0 && passwordVerifyTextField.stringValue.characters.count > 0 && (passwordTextField.stringValue == passwordVerifyTextField.stringValue)
     }
-
+    
 }

@@ -93,6 +93,13 @@ class RecordsViewController : NSViewController {
     
     @IBAction func deleteRecordButtonActivated(_ sender: Any) {
         
+        if let recordToDelete = recordsArrayController.selectedObjects.last as! ELRecord? {
+            self.server?.delete(recordToDelete, completionBlock: { (record, error) in
+                if(record != nil) {
+                    self.recordsArrayController.removeObject(recordToDelete as Any)
+                }
+            })
+        }
     }
     
     @IBAction func searchFieldActivated(_ sender: Any) {

@@ -56,9 +56,9 @@ class UsersViewController: RecordsViewController {
             self.presentViewControllerAsSheet(createEditorVC)
         }
     }
-    
-    @IBAction override func deleteRecordButtonActivated(_ sender: Any) {
-    }
+//    
+//    @IBAction override func deleteRecordButtonActivated(_ sender: Any) {
+//    }
     
 }
 
@@ -77,8 +77,14 @@ extension UsersViewController : RecordCreateEditorViewControllerDelegate
 extension UsersViewController : UserModifyEditorViewControllerDelegate
 {
     func modifyEditorViewController(_ viewController: UserModifyEditorViewController, didModifyRecord record: ELRecord) {
-        self.recordsArrayController.addObject(record)
-        self.tableView.scrollRowToVisible(self.tableView.selectedRow)
+        
+        
+        let arrangedObjects = self.recordsArrayController.arrangedObjects as! NSArray
+        let indexOfUpdatedRecord = arrangedObjects.indexOfObjectIdentical(to: record)
+        if(indexOfUpdatedRecord != NSNotFound) {
+            self.recordsArrayController.setSelectionIndex(indexOfUpdatedRecord)
+            self.tableView.scrollRowToVisible(self.tableView.selectedRow)
+        }
     }
     
     func modifyEditorViewController(_ viewController: UserModifyEditorViewController, didFailModifyingRecord error: Error?) {

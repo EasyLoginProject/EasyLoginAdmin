@@ -35,10 +35,17 @@ class UsersViewController: RecordsViewController {
         let arrangedObjects = recordsArrayController.arrangedObjects as! NSArray
         let record = arrangedObjects[tableView.clickedRow] as! ELRecord
         
-        let modifyEditorVC = UserModifyEditorViewController(server:server!, record: record)
-        modifyEditorVC.delegate = self;
-        modifyEditorVC.delegate_overriden = self; // since I don't know how to handle protocol inheritence is swift, i have to declare another delegate property... sorry
-        self.presentViewControllerAsSheet(modifyEditorVC)
+        if(NSEvent.modifierFlags().contains(NSEventModifierFlags.option)) {
+            let userPasswordEditorVC = UserPasswordEditorViewController(server: server!, record: record)
+            userPasswordEditorVC.delegate = self
+            self.presentViewControllerAsSheet(userPasswordEditorVC)
+        }
+        else {
+            let modifyEditorVC = UserModifyEditorViewController(server:server!, record: record)
+            modifyEditorVC.delegate = self;
+            modifyEditorVC.delegate_overriden = self; // since I don't know how to handle protocol inheritence is swift, i have to declare another delegate property... sorry
+            self.presentViewControllerAsSheet(modifyEditorVC)
+        }
     }
 
     
@@ -89,6 +96,21 @@ extension UsersViewController : UserModifyEditorViewControllerDelegate
     
     func modifyEditorViewController(_ viewController: UserModifyEditorViewController, didFailModifyingRecord error: Error?) {
         // see later
+    }
+}
+
+extension UsersViewController : UserPasswordEditorViewControllerDelegate
+{
+    func userPasswordEditorViewController(_ viewController: UserPasswordEditorViewController, didModifyPasswordForRecord record: ELRecord) {
+        dismissViewController(viewController)
+    }
+    
+    func userPasswordEditorViewController(_ viewController: UserPasswordEditorViewController, didCancelModifyingPasswordForRecord record: ELRecord) {
+        dismissViewController(viewController)
+    }
+    
+    func userPasswordEditorViewController(_ viewController: UserPasswordEditorViewController, didFailModifyingPasswordForRecord record: ELRecord, error: Error?) {
+        dismissViewController(viewController)
     }
 }
 

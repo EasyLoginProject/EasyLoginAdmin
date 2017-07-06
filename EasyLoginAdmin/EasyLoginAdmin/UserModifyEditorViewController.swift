@@ -14,10 +14,11 @@ protocol UserModifyEditorViewControllerDelegate {
 }
 
 
-class UserModifyEditorViewController: UserCreateEditorViewController {
+class UserModifyEditorViewController: UserCreateEditorViewController, UserPasswordEditorViewControllerDelegate {
     @IBOutlet weak var imageView: NSImageView!
     
-    @IBOutlet var changePasswordPanel: NSPanel!
+    @IBOutlet weak var changePasswordCheckImageView: NSImageView!
+    
     @objc dynamic var changePasswordInformationIsValid = false
     
     //open var delegate: UserModifyEditorViewControllerDelegate? // since I don't know how to handle protocol inheritence is swift, i have to declare another delegate property... sorry
@@ -53,37 +54,19 @@ class UserModifyEditorViewController: UserCreateEditorViewController {
     @IBAction override func okButtonActivated(_ sender: Any) {
         if(self.commitEditing()) {
             progressIndicator.startAnimation(self)
-            
-            //            //at this time the email field is a compulsory to create a user. Use the principalName value and duplicate it as email
-            //            if(properties?.value(forKey: kELUserEmailKey) == nil) {
-            //                properties?.setValue(properties?.value(forKey: kELUserPrincipalNameKey), forKey: kELUserEmailKey)
-            //            }
-            //            properties?.setValue([kELRecordAuthenticationMethodClearTextKey: passwordTextField.stringValue], forKey: kELRecordAuthenticationMethodsKey)
-            
             performCore()
         }
     }
     
     
     @IBAction func changePasswordButtonActivated(_ sender: Any) {
-        self.tabView.window?.beginSheet(changePasswordPanel, completionHandler: { (response) in
-            if(response == NSModalResponseStop) {
-                // maybe a specific call instead of using properties?
-                //properties?.setValue(passwordTextField, forKey: ....)
-                
-                // do we want to change the password now or wait for the parent sheet to be closed with the OK button?
-            }
-            else {
-                self.changePasswordInformationIsValid = false
-            }
-        })
-    }
-    @IBAction func changePasswordOKButtonActivated(_ sender: Any) {
-        self.tabView.window?.endSheet(changePasswordPanel, returnCode: NSModalResponseStop)
-    }
-    
-    @IBAction func changePasswordCancelButtonActivated(_ sender: Any) {
-        self.tabView.window?.endSheet(changePasswordPanel, returnCode: NSModalResponseAbort)
+        
+        let passwordEditorVC = UserPasswordEditorViewController(server: server!, record: record!)
+        passwordEditorVC.delegate = self
+        
+        changePasswordCheckImageView.isHidden = true
+        
+        self.presentViewControllerAsSheet(passwordEditorVC)
     }
     
     //MARK: - Made to be overriden
@@ -93,27 +76,8 @@ class UserModifyEditorViewController: UserCreateEditorViewController {
             server?.update(self.record!, withUpdatedProperties: updatedProperties, completionBlock: { (updatedRecord, error) in
                 self.progressIndicator.stopAnimation(self)
                 if updatedRecord != nil {
-                    if(self.changePasswordInformationIsValid) { // true if password was tried to be changed
-                        // currently there is no password change API, use the standard properties update API
-//                        self.server?.update(self.record!, withNewPassword: self.passwordTextField.stringValue, usingOldPassword: "old password???", completionBlock: { (updatedRecord, error) in
-                        // to change password, update the "authMethods" property with a clear text password
-                        self.server?.update(self.record!, withUpdatedProperties: ELRecordProperties(dictionary: [kELRecordAuthenticationMethodsKey : [kELRecordAuthenticationMethodClearTextKey : self.passwordTextField.stringValue]], mapping:nil)!, completionBlock: { (updatedRecord, error) in
-                            if updatedRecord != nil {
-                                self.delegate_overriden?.modifyEditorViewController(self, didModifyRecord: self.record!);
-                                self.dismissViewController(self)
-                            }
-                            else if let error = error {
-                                let alert = NSAlert(error: error)
-                                alert.beginSheetModal(for: self.view.window!, completionHandler: { (response) in
-                                    self.delegate_overriden?.modifyEditorViewController(self, didFailModifyingRecord: error)
-                                })
-                            }
-                        })
-                    }
-                    else {
-                        self.delegate_overriden?.modifyEditorViewController(self, didModifyRecord: self.record!);
-                        self.dismissViewController(self)
-                    }
+                    self.delegate_overriden?.modifyEditorViewController(self, didModifyRecord: self.record!);
+                    self.dismissViewController(self)
                 }
                 else if let error = error {
                     let alert = NSAlert(error: error)
@@ -126,28 +90,30 @@ class UserModifyEditorViewController: UserCreateEditorViewController {
     }
     
     
-    // MARK: - Delegate
+    // MARK: - Delegates
     
-    override func controlTextDidChange(_ obj: Notification) {
-        // MARK: NOTE: minimum char count for password?
-        
-        super.controlTextDidChange(obj)
-        
-        //let sender: NSTextField = obj.object as! NSTextField
-        
-        self.changePasswordInformationIsValid = validateChangePasswordInformation()
+    func userPasswordEditorViewController(_ viewController: UserPasswordEditorViewController, didModifyPasswordForRecord record: ELRecord) {
+        self.changePasswordInformationIsValid = true
+        changePasswordCheckImageView.isHidden = false
+        dismissViewController(viewController)
     }
+    
+    func userPasswordEditorViewController(_ viewController: UserPasswordEditorViewController, didCancelModifyingPasswordForRecord record: ELRecord) {
+        self.changePasswordInformationIsValid = false
+        dismissViewController(viewController)
+    }
+    
+    func userPasswordEditorViewController(_ viewController: UserPasswordEditorViewController, didFailModifyingPasswordForRecord record: ELRecord, error: Error?) {
+        self.changePasswordInformationIsValid = false
+        changePasswordCheckImageView.isHidden = true
+        dismissViewController(viewController)
+    }
+    
     
     // MARK: - Private
     
     override func validateInformation() -> Bool
     {
-        return givenNameTextField.stringValue.characters.count > 0 && surnameTextField.stringValue.characters.count > 0 && fullNameTextField.stringValue.characters.count > 0 && principalNameTextField.stringValue.characters.count > 0 && shortNameTextField.stringValue.characters.count > 0 // do not validate password here, use validateChangePasswordInformation() instead
+        return givenNameTextField.stringValue.characters.count > 0 && surnameTextField.stringValue.characters.count > 0 && fullNameTextField.stringValue.characters.count > 0 && principalNameTextField.stringValue.characters.count > 0 && shortNameTextField.stringValue.characters.count > 0
     }
-    
-    func validateChangePasswordInformation() -> Bool
-    {
-        return passwordTextField.stringValue.characters.count > 0 && passwordVerifyTextField.stringValue.characters.count > 0 && (passwordTextField.stringValue == passwordVerifyTextField.stringValue)
-    }
-    
 }

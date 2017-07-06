@@ -8,12 +8,10 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="UserModifyEditorViewController" customModule="EasyLoginAdmin" customModuleProvider="target">
             <connections>
-                <outlet property="changePasswordPanel" destination="Ikv-cp-bbQ" id="1XX-6m-hPd"/>
+                <outlet property="changePasswordCheckImageView" destination="kNr-He-vVK" id="vgG-kc-Niw"/>
                 <outlet property="fullNameTextField" destination="PNz-0L-FHy" id="qWy-pt-3ii"/>
                 <outlet property="givenNameTextField" destination="tmg-Pc-1q6" id="aPM-WV-Ah1"/>
                 <outlet property="imageView" destination="Wda-GM-7ve" id="i81-lD-gjE"/>
-                <outlet property="passwordTextField" destination="V6D-cx-AD1" id="C4p-jD-ZLM"/>
-                <outlet property="passwordVerifyTextField" destination="iV9-L5-BTh" id="rkV-3e-i9C"/>
                 <outlet property="principalNameTextField" destination="BD1-Wp-xV5" id="cV7-Sj-TLP"/>
                 <outlet property="progressIndicator" destination="Z6b-3A-qML" id="xEx-m5-ZUo"/>
                 <outlet property="shortNameTextField" destination="yjA-gq-4lp" id="Tv8-DG-xtc"/>
@@ -166,6 +164,14 @@
                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
+                                    <imageView hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kNr-He-vVK">
+                                        <rect key="frame" x="354" y="21" width="20" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="20" id="BMj-RC-x8f"/>
+                                            <constraint firstAttribute="height" constant="20" id="xg8-EA-1Lg"/>
+                                        </constraints>
+                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="greenCheck" id="ob9-R3-Oa4"/>
+                                    </imageView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="bta-D6-4Nb" firstAttribute="trailing" secondItem="L04-vN-OLm" secondAttribute="trailing" id="2nm-lB-Z8x"/>
@@ -181,6 +187,7 @@
                                     <constraint firstItem="BD1-Wp-xV5" firstAttribute="baseline" secondItem="onY-g3-AmP" secondAttribute="baseline" id="H1q-s5-gCK"/>
                                     <constraint firstAttribute="trailing" secondItem="tmg-Pc-1q6" secondAttribute="trailing" constant="17" id="HTn-fq-hFX"/>
                                     <constraint firstItem="PNz-0L-FHy" firstAttribute="leading" secondItem="cZJ-QX-an9" secondAttribute="leading" id="K3B-sY-vev"/>
+                                    <constraint firstItem="BV0-9c-NB4" firstAttribute="leading" secondItem="kNr-He-vVK" secondAttribute="trailing" constant="6" id="Ljv-JO-FhS"/>
                                     <constraint firstItem="cZJ-QX-an9" firstAttribute="leading" secondItem="tmg-Pc-1q6" secondAttribute="leading" id="Mzf-Si-dHd"/>
                                     <constraint firstItem="PNz-0L-FHy" firstAttribute="top" secondItem="cZJ-QX-an9" secondAttribute="bottom" constant="10" id="Osy-y2-Gex"/>
                                     <constraint firstItem="BD1-Wp-xV5" firstAttribute="trailing" secondItem="cZJ-QX-an9" secondAttribute="trailing" id="Pye-fB-cDa"/>
@@ -189,6 +196,7 @@
                                     <constraint firstItem="cZJ-QX-an9" firstAttribute="baseline" secondItem="L04-vN-OLm" secondAttribute="baseline" id="UMe-wv-nWG"/>
                                     <constraint firstItem="tmg-Pc-1q6" firstAttribute="top" secondItem="Gif-JB-PL4" secondAttribute="top" constant="3" id="VfB-jY-PSb"/>
                                     <constraint firstItem="bta-D6-4Nb" firstAttribute="leading" secondItem="L04-vN-OLm" secondAttribute="leading" id="YG8-wd-oDI"/>
+                                    <constraint firstItem="kNr-He-vVK" firstAttribute="centerY" secondItem="BV0-9c-NB4" secondAttribute="centerY" id="aGW-cG-j6l"/>
                                     <constraint firstItem="tmg-Pc-1q6" firstAttribute="leading" secondItem="u8M-yk-UtI" secondAttribute="trailing" constant="10" id="aUF-G9-Zbg"/>
                                     <constraint firstItem="yjA-gq-4lp" firstAttribute="trailing" secondItem="BD1-Wp-xV5" secondAttribute="trailing" id="cnL-V6-DNf"/>
                                     <constraint firstItem="PNz-0L-FHy" firstAttribute="trailing" secondItem="cZJ-QX-an9" secondAttribute="trailing" id="cnx-GE-2OV"/>
@@ -269,107 +277,8 @@ Gw
             </constraints>
             <point key="canvasLocation" x="174.5" y="208"/>
         </customView>
-        <window title="Change Passeword" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="Ikv-cp-bbQ" userLabel="Change Password Panel" customClass="NSPanel">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
-            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="272" y="172" width="567" height="140"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
-            <view key="contentView" id="XJc-kr-nwa">
-                <rect key="frame" x="0.0" y="0.0" width="567" height="140"/>
-                <autoresizingMask key="autoresizingMask"/>
-                <subviews>
-                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FwG-gS-hyY">
-                        <rect key="frame" x="471" y="13" width="82" height="32"/>
-                        <buttonCell key="cell" type="push" title="OK" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="jjS-ux-KIt">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                            <string key="keyEquivalent" base64-UTF8="YES">
-DQ
-</string>
-                        </buttonCell>
-                        <connections>
-                            <action selector="changePasswordOKButtonActivated:" target="-2" id="Y6v-pS-bm8"/>
-                            <binding destination="-2" name="enabled" keyPath="self.changePasswordInformationIsValid" id="08R-He-s6l"/>
-                        </connections>
-                    </button>
-                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xjp-dH-wOm">
-                        <rect key="frame" x="389" y="13" width="82" height="32"/>
-                        <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="hEm-al-OqL">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                            <string key="keyEquivalent" base64-UTF8="YES">
-Gw
-</string>
-                        </buttonCell>
-                        <connections>
-                            <action selector="changePasswordCancelButtonActivated:" target="-2" id="b0n-PW-IGa"/>
-                        </connections>
-                    </button>
-                    <secureTextField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iV9-L5-BTh">
-                        <rect key="frame" x="162" y="66" width="385" height="22"/>
-                        <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="New Password (Again)" drawsBackground="YES" usesSingleLineMode="YES" id="4Hm-dt-aWy">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                            <allowedInputSourceLocales>
-                                <string>NSAllRomanInputSourcesLocaleIdentifier</string>
-                            </allowedInputSourceLocales>
-                        </secureTextFieldCell>
-                        <connections>
-                            <outlet property="delegate" destination="-2" id="4RR-yX-FdA"/>
-                        </connections>
-                    </secureTextField>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="751" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cvy-lX-XCk">
-                        <rect key="frame" x="18" y="69" width="136" height="17"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Verify New Password:" id="TXD-MH-86n">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="751" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="syL-0y-goc">
-                        <rect key="frame" x="18" y="101" width="136" height="17"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="New Password:" id="P5V-Lr-yYY">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                    <secureTextField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V6D-cx-AD1">
-                        <rect key="frame" x="162" y="98" width="385" height="22"/>
-                        <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="New Password" drawsBackground="YES" usesSingleLineMode="YES" id="ZRG-20-hpW">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                            <allowedInputSourceLocales>
-                                <string>NSAllRomanInputSourcesLocaleIdentifier</string>
-                            </allowedInputSourceLocales>
-                        </secureTextFieldCell>
-                        <connections>
-                            <outlet property="delegate" destination="-2" id="eC2-YS-Ksp"/>
-                        </connections>
-                    </secureTextField>
-                </subviews>
-                <constraints>
-                    <constraint firstItem="syL-0y-goc" firstAttribute="baseline" secondItem="V6D-cx-AD1" secondAttribute="baseline" id="26f-pf-FAw"/>
-                    <constraint firstAttribute="trailing" secondItem="V6D-cx-AD1" secondAttribute="trailing" constant="20" id="3lQ-Il-J0s"/>
-                    <constraint firstAttribute="bottom" secondItem="FwG-gS-hyY" secondAttribute="bottom" constant="20" id="5Lg-y5-rbz"/>
-                    <constraint firstItem="syL-0y-goc" firstAttribute="leading" secondItem="XJc-kr-nwa" secondAttribute="leading" constant="20" id="7z0-Yc-cqU"/>
-                    <constraint firstItem="FwG-gS-hyY" firstAttribute="width" secondItem="xjp-dH-wOm" secondAttribute="width" id="85x-Zc-hem"/>
-                    <constraint firstItem="xjp-dH-wOm" firstAttribute="baseline" secondItem="FwG-gS-hyY" secondAttribute="baseline" id="CfQ-tL-7tC"/>
-                    <constraint firstItem="V6D-cx-AD1" firstAttribute="leading" secondItem="syL-0y-goc" secondAttribute="trailing" constant="10" id="HLn-FT-ATm"/>
-                    <constraint firstItem="iV9-L5-BTh" firstAttribute="leading" secondItem="V6D-cx-AD1" secondAttribute="leading" id="IqV-qi-Msu"/>
-                    <constraint firstItem="FwG-gS-hyY" firstAttribute="leading" secondItem="xjp-dH-wOm" secondAttribute="trailing" constant="12" id="L1r-wx-4I1"/>
-                    <constraint firstItem="Cvy-lX-XCk" firstAttribute="trailing" secondItem="syL-0y-goc" secondAttribute="trailing" id="L7f-1N-Web"/>
-                    <constraint firstAttribute="trailing" secondItem="FwG-gS-hyY" secondAttribute="trailing" constant="20" id="Ud5-BE-ZMP"/>
-                    <constraint firstItem="Cvy-lX-XCk" firstAttribute="baseline" secondItem="iV9-L5-BTh" secondAttribute="baseline" id="biB-w8-UjU"/>
-                    <constraint firstItem="iV9-L5-BTh" firstAttribute="top" secondItem="V6D-cx-AD1" secondAttribute="bottom" constant="10" id="fGQ-SV-O7U"/>
-                    <constraint firstItem="iV9-L5-BTh" firstAttribute="trailing" secondItem="V6D-cx-AD1" secondAttribute="trailing" id="kvT-Ew-4Kq"/>
-                    <constraint firstItem="Cvy-lX-XCk" firstAttribute="leading" secondItem="syL-0y-goc" secondAttribute="leading" id="lbN-2b-ofR"/>
-                    <constraint firstItem="V6D-cx-AD1" firstAttribute="top" secondItem="XJc-kr-nwa" secondAttribute="top" constant="20" id="pc1-EI-U6G"/>
-                </constraints>
-            </view>
-            <point key="canvasLocation" x="131" y="543"/>
-        </window>
     </objects>
+    <resources>
+        <image name="greenCheck" width="91" height="91"/>
+    </resources>
 </document>

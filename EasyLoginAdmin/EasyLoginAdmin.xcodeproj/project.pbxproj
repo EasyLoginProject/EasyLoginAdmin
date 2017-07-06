@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C4527EC31F0E27DD00B430F3 /* UserPasswordEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4527EC11F0E27DD00B430F3 /* UserPasswordEditorViewController.swift */; };
+		C4527EC41F0E27DD00B430F3 /* UserPasswordEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4527EC21F0E27DD00B430F3 /* UserPasswordEditorViewController.xib */; };
 		C4553B9B1EFD3DC500D1CF3D /* DevicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4553B991EFD3DC500D1CF3D /* DevicesViewController.swift */; };
 		C4553B9F1EFD3E1300D1CF3D /* RecordsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4553B9E1EFD3E1300D1CF3D /* RecordsViewController.swift */; };
 		C4553BA11EFD409600D1CF3D /* DevicesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4553BA01EFD409600D1CF3D /* DevicesViewController.xib */; };
@@ -35,6 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C4527EC11F0E27DD00B430F3 /* UserPasswordEditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPasswordEditorViewController.swift; sourceTree = "<group>"; };
+		C4527EC21F0E27DD00B430F3 /* UserPasswordEditorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserPasswordEditorViewController.xib; sourceTree = "<group>"; };
 		C4553B991EFD3DC500D1CF3D /* DevicesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DevicesViewController.swift; sourceTree = "<group>"; };
 		C4553B9E1EFD3E1300D1CF3D /* RecordsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordsViewController.swift; sourceTree = "<group>"; };
 		C4553BA01EFD409600D1CF3D /* DevicesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DevicesViewController.xib; sourceTree = "<group>"; };
@@ -100,6 +104,8 @@
 				C48498641EF819DB00E02438 /* UserCreateEditorViewController.xib */,
 				C4C6782E1F011C7C00BD26F7 /* UserModifyEditorViewController.swift */,
 				C4C678331F0131B600BD26F7 /* UserModifyEditorViewController.xib */,
+				C4527EC11F0E27DD00B430F3 /* UserPasswordEditorViewController.swift */,
+				C4527EC21F0E27DD00B430F3 /* UserPasswordEditorViewController.xib */,
 				C471D4081EBA00D70015997C /* Assets.xcassets */,
 				C471D40D1EBA00D70015997C /* Info.plist */,
 				C458A5191EEAB54700B12F83 /* MainMenu.xib */,
@@ -197,6 +203,7 @@
 				C471D4091EBA00D70015997C /* Assets.xcassets in Resources */,
 				C4553BA11EFD409600D1CF3D /* DevicesViewController.xib in Resources */,
 				C458A5161EEAAB7A00B12F83 /* UsersViewController.xib in Resources */,
+				C4527EC41F0E27DD00B430F3 /* UserPasswordEditorViewController.xib in Resources */,
 				C458A5101EEAA04C00B12F83 /* MainViewController.xib in Resources */,
 				C458A51A1EEAB54700B12F83 /* MainMenu.xib in Resources */,
 			);
@@ -210,6 +217,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C48498651EF819DB00E02438 /* UserCreateEditorViewController.swift in Sources */,
+				C4527EC31F0E27DD00B430F3 /* UserPasswordEditorViewController.swift in Sources */,
 				C4553B9F1EFD3E1300D1CF3D /* RecordsViewController.swift in Sources */,
 				C4C5F9051EC073F6003C91A9 /* UsersViewController.swift in Sources */,
 				C471D4051EBA00D70015997C /* AppDelegate.swift in Sources */,

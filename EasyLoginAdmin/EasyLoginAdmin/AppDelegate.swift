@@ -8,7 +8,7 @@
 
 import Cocoa
 
-let baseURLString = "http://develop.eu.easylogin.cloud" // "http://demo.eu.easylogin.cloud"
+let baseURLString = /*"http://develop.eu.easylogin.cloud"*/ "https://demo.eu.easylogin.cloud"
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {

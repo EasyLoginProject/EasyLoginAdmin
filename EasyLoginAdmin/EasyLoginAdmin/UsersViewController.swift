@@ -43,7 +43,7 @@ class UsersViewController: RecordsViewController {
         else {
             let modifyEditorVC = UserModifyEditorViewController(server:server!, record: record)
             modifyEditorVC.delegate = self;
-            modifyEditorVC.delegate_overriden = self; // since I don't know how to handle protocol inheritence is swift, i have to declare another delegate property... sorry
+            modifyEditorVC.delegate_overriden = self; // AH since I don't know how to handle protocol inheritence in swift, i have to declare another delegate property... sorry
             self.presentViewControllerAsSheet(modifyEditorVC)
         }
     }
